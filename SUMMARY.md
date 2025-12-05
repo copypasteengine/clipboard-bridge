@@ -110,7 +110,7 @@ git add .
 git commit -m "feat: 支持多平台构建 (Windows/Linux/macOS)"
 
 # 2. 添加远程仓库
-git remote add origin https://github.com/YOUR_USERNAME/clipboard-bridge.git
+git remote add origin https://github.com/copypasteengine/clipboard-bridge.git
 
 # 3. 推送代码
 git branch -M main
@@ -208,9 +208,9 @@ git push origin v1.0.0
 
 ## 🔗 相关链接
 
-- **GitHub**: https://github.com/YOUR_USERNAME/clipboard-bridge
-- **Issues**: https://github.com/YOUR_USERNAME/clipboard-bridge/issues
-- **Releases**: https://github.com/YOUR_USERNAME/clipboard-bridge/releases
+- **GitHub**: https://github.com/copypasteengine/clipboard-bridge
+- **Issues**: https://github.com/copypasteengine/clipboard-bridge/issues
+- **Releases**: https://github.com/copypasteengine/clipboard-bridge/releases
 
 ## 📞 支持
 
@@ -232,7 +232,7 @@ git push origin v1.0.0
 - [x] .gitignore 已更新
 - [x] 构建脚本已创建
 - [x] README.md 已更新为多平台说明
-- [ ] 将 `YOUR_USERNAME` 替换为实际的 GitHub 用户名
+- [x] 将 `YOUR_USERNAME` 替换为实际的 GitHub 用户名
 - [ ] 测试本地构建（如果有编译环境）
 - [ ] 提交所有更改到 Git
 

@@ -29,7 +29,7 @@
 
 **从 GitHub Release 下载:**
 
-1. 访问 [Releases 页面](https://github.com/YOUR_USERNAME/clipboard-bridge/releases)
+1. 访问 [Releases 页面](https://github.com/copypasteengine/clipboard-bridge/releases)
 2. 根据你的系统下载对应的文件:
    - **Windows x64**: `clipboard-bridge-windows-amd64.zip`
    - **Linux x64**: `clipboard-bridge-linux-amd64.tar.gz`
@@ -306,7 +306,7 @@ Token: (如果设置了就填,没设置就留空)
 
 ```bash
 # 1. 克隆仓库
-git clone https://github.com/YOUR_USERNAME/clipboard-bridge.git
+git clone https://github.com/copypasteengine/clipboard-bridge.git
 cd clipboard-bridge
 
 # 2. 安装依赖

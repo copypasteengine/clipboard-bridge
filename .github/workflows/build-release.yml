@@ -46,11 +46,10 @@ jobs:
     
     - name: Setup MinGW (Windows)
       if: runner.os == 'Windows'
-      uses: msys2/setup-msys2@v2
-      with:
-        msystem: MINGW64
-        install: mingw-w64-x86_64-gcc
-        update: false
+      run: |
+        choco install mingw -y --force
+        Write-Host "MinGW installed"
+      shell: powershell
     
     - name: Install dependencies (Linux)
       if: runner.os == 'Linux'
@@ -71,18 +70,39 @@ jobs:
     
     - name: Build (Windows)
       if: runner.os == 'Windows'
-      shell: msys2 {0}
       env:
-        CGO_ENABLED: 1
+        CGO_ENABLED: "1"
       run: |
-        export PATH="/mingw64/bin:$PATH"
-        echo "Building for Windows..."
+        # 查找并添加 MinGW 到 PATH
+        $mingwPath = "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
+        if (Test-Path $mingwPath) {
+          $env:PATH = "$mingwPath;$env:PATH"
+          Write-Host "Added MinGW to PATH: $mingwPath"
+        }
+        
+        Write-Host "Building for Windows..."
         go version
-        go env
-        echo "CGO_ENABLED=$CGO_ENABLED"
-        go build -v ${{ matrix.build_flags }} -o ${{ matrix.output }} 2>&1 | tee build.log || (cat build.log && exit 1)
-        echo "Build completed successfully"
-        ls -lh ${{ matrix.output }}
+        Write-Host "CGO_ENABLED: $env:CGO_ENABLED"
+        
+        # 验证 GCC 是否可用
+        try {
+          gcc --version
+          Write-Host "GCC is available"
+        } catch {
+          Write-Host "WARNING: GCC not found in PATH"
+          Write-Host "Current PATH: $env:PATH"
+        }
+        
+        # 构建
+        go build -v ${{ matrix.build_flags }} -o ${{ matrix.output }}
+        if ($LASTEXITCODE -ne 0) { 
+          Write-Host "Build failed with exit code $LASTEXITCODE"
+          exit $LASTEXITCODE 
+        }
+        
+        Write-Host "Build completed successfully"
+        Get-Item ${{ matrix.output }}
+      shell: powershell
     
     - name: Build (Unix)
       if: runner.os != 'Windows'

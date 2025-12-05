@@ -31,16 +31,16 @@
 
 1. 访问 [Releases 页面](https://github.com/YOUR_USERNAME/clipboard-bridge/releases)
 2. 根据你的系统下载对应的文件:
-   - **Windows x64**: `ClipboardBridge-windows-amd64.zip`
-   - **Linux x64**: `ClipboardBridge-linux-amd64.tar.gz`
-   - **macOS (M1/M2/M3)**: `ClipboardBridge-macos-arm64.tar.gz`
+   - **Windows x64**: `clipboard-bridge-windows-amd64.zip`
+   - **Linux x64**: `clipboard-bridge-linux-amd64.tar.gz`
+   - **macOS (M1/M2/M3)**: `clipboard-bridge-macos-arm64.tar.gz`
 
 > **注意**: macOS Intel 用户需要使用 Rosetta 2 运行 ARM64 版本，或[从源码编译](#从源码编译)
 
 **Windows 安装:**
 ```powershell
 # 1. 解压 zip 文件
-# 2. 双击运行 ClipboardBridge.exe
+# 2. 双击运行 clipboard-bridge.exe
 # 3. 查看系统托盘图标
 ```
 
@@ -315,7 +315,7 @@ go mod download
 # 3. 编译
 
 # Windows (无窗口模式)
-go build -ldflags="-H windowsgui" -o ClipboardBridge.exe
+go build -ldflags="-H windowsgui" -o clipboard-bridge.exe
 
 # Linux
 go build -o clipboard-bridge
@@ -324,10 +324,10 @@ go build -o clipboard-bridge
 go build -o clipboard-bridge
 
 # 交叉编译 (在 Linux/macOS 上编译 Windows 版本)
-GOOS=windows GOARCH=amd64 CGO_ENABLED=1 CC=x86_64-w64-mingw32-gcc go build -ldflags="-H windowsgui" -o ClipboardBridge.exe
+GOOS=windows GOARCH=amd64 CGO_ENABLED=1 CC=x86_64-w64-mingw32-gcc go build -ldflags="-H windowsgui" -o clipboard-bridge.exe
 
 # 4. 运行
-# Windows: ./ClipboardBridge.exe
+# Windows: ./clipboard-bridge.exe
 # Linux/macOS: ./clipboard-bridge
 ```
 

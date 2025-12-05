@@ -16,21 +16,21 @@ jobs:
         include:
           # Windows x64 - 原生构建
           - os: windows-latest
-            output: ClipboardBridge.exe
-            archive: ClipboardBridge-windows-amd64.zip
-            build_flags: "-ldflags=-H windowsgui"
+            output: clipboard-bridge.exe
+            archive: clipboard-bridge-windows-amd64.zip
+            build_flags: '-ldflags "-H windowsgui"'
           
           # Linux x64 - 原生构建
           - os: ubuntu-latest
             output: clipboard-bridge
-            archive: ClipboardBridge-linux-amd64.tar.gz
+            archive: clipboard-bridge-linux-amd64.tar.gz
             build_flags: ""
           
           # macOS (通用) - 原生构建
           # 注意: GitHub 免费 runner 只提供 ARM64 (Apple Silicon)
           - os: macos-latest
             output: clipboard-bridge
-            archive: ClipboardBridge-macos-arm64.tar.gz
+            archive: clipboard-bridge-macos-arm64.tar.gz
             build_flags: ""
     
     runs-on: ${{ matrix.os }}
@@ -93,8 +93,16 @@ jobs:
           Write-Host "Current PATH: $env:PATH"
         }
         
-        # 构建
-        go build -v ${{ matrix.build_flags }} -o ${{ matrix.output }}
+        # 构建 - 使用 Invoke-Expression 正确处理参数
+        $buildCmd = "go build -v"
+        if ("${{ matrix.build_flags }}" -ne "") {
+          $buildCmd += " ${{ matrix.build_flags }}"
+        }
+        $buildCmd += " -o ${{ matrix.output }}"
+        
+        Write-Host "Executing: $buildCmd"
+        Invoke-Expression $buildCmd
+        
         if ($LASTEXITCODE -ne 0) { 
           Write-Host "Build failed with exit code $LASTEXITCODE"
           exit $LASTEXITCODE 
@@ -168,9 +176,9 @@ jobs:
           
           | 平台 | 架构 | 文件 |
           |------|------|------|
-          | Windows | x64 | `ClipboardBridge-windows-amd64.zip` |
-          | Linux | x64 | `ClipboardBridge-linux-amd64.tar.gz` |
-          | macOS | Apple Silicon (M1/M2/M3) | `ClipboardBridge-macos-arm64.tar.gz` |
+          | Windows | x64 | `clipboard-bridge-windows-amd64.zip` |
+          | Linux | x64 | `clipboard-bridge-linux-amd64.tar.gz` |
+          | macOS | Apple Silicon (M1/M2/M3) | `clipboard-bridge-macos-arm64.tar.gz` |
           
           > **注意**: macOS Intel 版本需要本地编译或使用付费 GitHub runner。
           

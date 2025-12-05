@@ -166,6 +166,31 @@ http://电脑IP:5678/pull?token=your-token
 
 ## 📱 手机端集成
 
+### Android - 原生应用（推荐）
+
+我们提供了完整的 Android 原生应用！
+
+**功能特性：**
+- ✅ Material Design 3 现代化 UI
+- ✅ 智能同步（自动判断方向）
+- ✅ 实时显示双端剪贴板内容
+- ✅ 自动保存服务器配置
+- ✅ 支持深色模式
+
+**使用方法：**
+
+1. **从源码编译**（推荐）
+   ```bash
+   cd android-app
+   # 使用 Android Studio 打开，或命令行构建：
+   ./gradlew assembleDebug
+   ```
+   详见 [Android App 文档](./android-app/README.md)
+
+2. **使用 HTTP Shortcuts**
+   
+   无需编程，5 分钟配置完成。详见 [Android 集成指南](./ANDROID.md)
+
 ### iOS - 快捷指令
 
 #### 基本配置

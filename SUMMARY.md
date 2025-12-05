@@ -71,7 +71,7 @@ clipboard-bridge/
 │   ├── main_common.go                 # 跨平台通用代码 ⭐
 │   ├── clipboard_windows.go           # Windows 实现 🪟
 │   ├── clipboard_unix.go              # Unix 实现 🐧🍎
-│   ├── clipboard.c                    # Windows C 代码
+│   ├── clipboard_windows.c            # Windows C 代码
 │   └── icon.go                        # 托盘图标
 │
 ├── 📝 文档文件

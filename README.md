@@ -425,7 +425,7 @@ GOOS=windows GOARCH=amd64 CGO_ENABLED=1 CC=x86_64-w64-mingw32-gcc go build -ldfl
 - **跨平台支持**: 条件编译 (build tags)
 - **GUI**: getlantern/systray (系统托盘)
 - **剪贴板**: atotto/clipboard (跨平台)
-- **Windows API**: CGo (C 语言互操作,仅 Windows)
+- **Windows API**: CGo + C 语言 (clipboard_windows.c)
 - **HTTP**: 标准库 net/http
 - **日志**: 标准库 log
 

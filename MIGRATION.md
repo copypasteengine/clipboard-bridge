@@ -11,7 +11,7 @@
 | `main_common.go` | 跨平台通用代码（HTTP 服务、配置、日志等） | 全部 |
 | `clipboard_windows.go` | Windows 特定实现 | Windows |
 | `clipboard_unix.go` | Unix/Linux/macOS 实现 | Linux/macOS |
-| `clipboard.c` | Windows 剪贴板 C 代码 | Windows |
+| `clipboard_windows.c` | Windows 剪贴板 C 代码 | Windows |
 | `icon.go` | 托盘图标资源 | 全部 |
 | `build.sh` | Linux/macOS 构建脚本 | Linux/macOS |
 | `build.bat` | Windows 构建脚本 | Windows |

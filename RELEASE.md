@@ -170,7 +170,7 @@ clipboard-bridge/
 ├── clipboard_windows.go         # Windows 特定实现
 ├── clipboard_unix.go            # Unix/Linux/macOS 实现
 ├── icon.go                      # 图标资源
-├── clipboard.c                  # C 剪贴板监听（仅 Windows）
+├── clipboard_windows.c          # C 剪贴板监听（仅 Windows）
 ├── build.sh                     # Linux/macOS 构建脚本
 ├── build.bat                    # Windows 构建脚本
 ├── go.mod                       # Go 依赖

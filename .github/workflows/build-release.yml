@@ -13,37 +13,26 @@ jobs:
     strategy:
       matrix:
         include:
+          # Windows x64 - 原生构建
           - os: windows-latest
-            goos: windows
-            goarch: amd64
             output: ClipboardBridge.exe
             archive: ClipboardBridge-windows-amd64.zip
             build_flags: "-ldflags=-H windowsgui"
           
+          # Linux x64 - 原生构建
           - os: ubuntu-latest
-            goos: linux
-            goarch: amd64
             output: clipboard-bridge
             archive: ClipboardBridge-linux-amd64.tar.gz
             build_flags: ""
           
-          - os: ubuntu-latest
-            goos: linux
-            goarch: arm64
-            output: clipboard-bridge
-            archive: ClipboardBridge-linux-arm64.tar.gz
-            build_flags: ""
-          
-          - os: macos-latest
-            goos: darwin
-            goarch: amd64
+          # macOS Intel - 原生构建
+          - os: macos-13  # Intel runner
             output: clipboard-bridge
             archive: ClipboardBridge-macos-amd64.tar.gz
             build_flags: ""
           
-          - os: macos-latest
-            goos: darwin
-            goarch: arm64
+          # macOS Apple Silicon - 原生构建
+          - os: macos-latest  # ARM64 runner
             output: clipboard-bridge
             archive: ClipboardBridge-macos-arm64.tar.gz
             build_flags: ""
@@ -60,17 +49,19 @@ jobs:
         go-version: '1.20'
     
     - name: Install MinGW (Windows only)
-      if: matrix.os == 'windows-latest'
+      if: runner.os == 'Windows'
       run: choco install mingw -y
     
-    - name: Install dependencies
+    - name: Install dependencies (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y xclip xsel
+    
+    - name: Install Go dependencies
       run: go mod download
     
     - name: Build
-      env:
-        GOOS: ${{ matrix.goos }}
-        GOARCH: ${{ matrix.goarch }}
-        CGO_ENABLED: "1"
       run: |
         go build ${{ matrix.build_flags }} -o ${{ matrix.output }}
     
@@ -125,9 +116,8 @@ jobs:
           |------|------|------|
           | Windows | x64 | `ClipboardBridge-windows-amd64.zip` |
           | Linux | x64 | `ClipboardBridge-linux-amd64.tar.gz` |
-          | Linux | ARM64 | `ClipboardBridge-linux-arm64.tar.gz` |
           | macOS | Intel | `ClipboardBridge-macos-amd64.tar.gz` |
-          | macOS | Apple Silicon | `ClipboardBridge-macos-arm64.tar.gz` |
+          | macOS | Apple Silicon (M1/M2) | `ClipboardBridge-macos-arm64.tar.gz` |
           
           ### 📥 下载说明
           

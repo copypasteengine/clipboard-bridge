@@ -7,7 +7,7 @@
 | 平台 | 架构 | 剪贴板监听 | 开机自启 | 防火墙配置 |
 |------|------|------------|----------|------------|
 | Windows | x64 | ✅ 系统级 | ✅ 自动 | ✅ 自动 |
-| Linux | x64 / ARM64 | ⚡ 轮询 | 📝 手动 | 📝 手动 |
+| Linux | x64 | ⚡ 轮询 | 📝 手动 | 📝 手动 |
 | macOS | Intel / Apple Silicon | ⚡ 轮询 | 📝 手动 | 📝 手动 |
 
 ## ✨ 主要功能
@@ -29,11 +29,10 @@
 
 1. 访问 [Releases 页面](https://github.com/YOUR_USERNAME/clipboard-bridge/releases)
 2. 根据你的系统下载对应的文件:
-   - **Windows**: `ClipboardBridge-windows-amd64.zip`
-   - **Linux (x64)**: `ClipboardBridge-linux-amd64.tar.gz`
-   - **Linux (ARM64)**: `ClipboardBridge-linux-arm64.tar.gz`
-   - **macOS (Intel)**: `ClipboardBridge-macos-amd64.tar.gz`
-   - **macOS (Apple Silicon)**: `ClipboardBridge-macos-arm64.tar.gz`
+   - **Windows x64**: `ClipboardBridge-windows-amd64.zip`
+   - **Linux x64**: `ClipboardBridge-linux-amd64.tar.gz`
+   - **macOS Intel**: `ClipboardBridge-macos-amd64.tar.gz`
+   - **macOS Apple Silicon (M1/M2/M3)**: `ClipboardBridge-macos-arm64.tar.gz`
 
 **Windows 安装:**
 ```powershell

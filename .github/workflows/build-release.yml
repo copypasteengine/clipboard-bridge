@@ -1,0 +1,165 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # 当推送 v1.0.0 这样的标签时触发
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            goos: windows
+            goarch: amd64
+            output: ClipboardBridge.exe
+            archive: ClipboardBridge-windows-amd64.zip
+            build_flags: "-ldflags=-H windowsgui"
+          
+          - os: ubuntu-latest
+            goos: linux
+            goarch: amd64
+            output: clipboard-bridge
+            archive: ClipboardBridge-linux-amd64.tar.gz
+            build_flags: ""
+          
+          - os: ubuntu-latest
+            goos: linux
+            goarch: arm64
+            output: clipboard-bridge
+            archive: ClipboardBridge-linux-arm64.tar.gz
+            build_flags: ""
+          
+          - os: macos-latest
+            goos: darwin
+            goarch: amd64
+            output: clipboard-bridge
+            archive: ClipboardBridge-macos-amd64.tar.gz
+            build_flags: ""
+          
+          - os: macos-latest
+            goos: darwin
+            goarch: arm64
+            output: clipboard-bridge
+            archive: ClipboardBridge-macos-arm64.tar.gz
+            build_flags: ""
+    
+    runs-on: ${{ matrix.os }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.20'
+    
+    - name: Install MinGW (Windows only)
+      if: matrix.os == 'windows-latest'
+      run: choco install mingw -y
+    
+    - name: Install dependencies
+      run: go mod download
+    
+    - name: Build
+      env:
+        GOOS: ${{ matrix.goos }}
+        GOARCH: ${{ matrix.goarch }}
+        CGO_ENABLED: "1"
+      run: |
+        go build ${{ matrix.build_flags }} -o ${{ matrix.output }}
+    
+    - name: Create config example
+      run: |
+        echo '{"port":5678,"token":"","auto_start":true,"auto_firewall":true,"log_level":"info"}' > config.example.json
+    
+    - name: Create ZIP archive (Windows)
+      if: matrix.os == 'windows-latest'
+      run: |
+        Compress-Archive -Path ${{ matrix.output }},config.example.json -DestinationPath ${{ matrix.archive }}
+    
+    - name: Create TAR.GZ archive (Unix)
+      if: matrix.os != 'windows-latest'
+      run: |
+        tar -czf ${{ matrix.archive }} ${{ matrix.output }} config.example.json
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ matrix.archive }}
+        path: ${{ matrix.archive }}
+  
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Download all artifacts
+      uses: actions/download-artifact@v3
+      with:
+        path: artifacts
+    
+    - name: Get version
+      id: version
+      run: |
+        echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: artifacts/**/*
+        body: |
+          ## 📦 Clipboard Bridge ${{ steps.version.outputs.VERSION }}
+          
+          ### 🎯 支持的平台
+          
+          | 平台 | 架构 | 文件 |
+          |------|------|------|
+          | Windows | x64 | `ClipboardBridge-windows-amd64.zip` |
+          | Linux | x64 | `ClipboardBridge-linux-amd64.tar.gz` |
+          | Linux | ARM64 | `ClipboardBridge-linux-arm64.tar.gz` |
+          | macOS | Intel | `ClipboardBridge-macos-amd64.tar.gz` |
+          | macOS | Apple Silicon | `ClipboardBridge-macos-arm64.tar.gz` |
+          
+          ### 📥 下载说明
+          
+          **Windows:**
+          1. 下载 `ClipboardBridge-windows-amd64.zip`
+          2. 解压到任意目录
+          3. 双击运行 `ClipboardBridge.exe`
+          
+          **Linux / macOS:**
+          1. 下载对应平台的 `.tar.gz` 文件
+          2. 解压: `tar -xzf ClipboardBridge-*.tar.gz`
+          3. 添加执行权限: `chmod +x clipboard-bridge`
+          4. 运行: `./clipboard-bridge`
+          
+          ### 📝 配置文件
+          
+          首次运行会生成 `config.json`，可根据需要修改：
+          - `port`: 服务端口（默认 5678）
+          - `token`: API 访问令牌
+          - `auto_start`: 开机自启（Windows 支持自动配置）
+          - `log_level`: 日志级别（debug/info/error）
+          
+          ### 🔧 平台差异说明
+          
+          - **Windows**: 支持系统级剪贴板监听、自动开机自启、防火墙配置
+          - **Linux/macOS**: 使用轮询方式监听剪贴板，开机自启和防火墙需手动配置
+          
+          ### 更新内容
+          
+          请查看提交记录了解详细更新内容。
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

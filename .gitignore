@@ -1,0 +1,48 @@
+# 二进制可执行文件
+*.exe
+ClipboardBridge.exe
+clipboard-bridge
+ClipboardBridge
+clipboard-bridge-*
+
+# 构建输出目录
+dist/
+build/
+
+# 压缩包
+*.zip
+*.tar.gz
+
+# 备份文件
+*.bak
+
+# 日志文件
+*.log
+clipboard_bridge.log
+
+# 配置文件（包含敏感信息）
+config.json
+
+# Go 编译产物
+*.test
+*.out
+*.prof
+
+# IDE 配置
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Windows 系统文件
+Thumbs.db
+Desktop.ini
+
+# macOS 系统文件
+.DS_Store
+
+# 临时文件
+*.tmp
+*.bak
+

@@ -1,0 +1,8 @@
+{
+  "port": 5678,
+  "token": "",
+  "auto_start": true,
+  "auto_firewall": true,
+  "log_level": "info"
+}
+

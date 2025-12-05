@@ -25,14 +25,9 @@ jobs:
             archive: ClipboardBridge-linux-amd64.tar.gz
             build_flags: ""
           
-          # macOS Intel - 原生构建
-          - os: macos-15-large  # Intel runner (新版本)
-            output: clipboard-bridge
-            archive: ClipboardBridge-macos-amd64.tar.gz
-            build_flags: ""
-          
-          # macOS Apple Silicon - 原生构建
-          - os: macos-latest  # ARM64 runner
+          # macOS (通用) - 原生构建
+          # 注意: GitHub 免费 runner 只提供 ARM64 (Apple Silicon)
+          - os: macos-latest
             output: clipboard-bridge
             archive: ClipboardBridge-macos-arm64.tar.gz
             build_flags: ""
@@ -130,8 +125,9 @@ jobs:
           |------|------|------|
           | Windows | x64 | `ClipboardBridge-windows-amd64.zip` |
           | Linux | x64 | `ClipboardBridge-linux-amd64.tar.gz` |
-          | macOS | Intel | `ClipboardBridge-macos-amd64.tar.gz` |
-          | macOS | Apple Silicon (M1/M2) | `ClipboardBridge-macos-arm64.tar.gz` |
+          | macOS | Apple Silicon (M1/M2/M3) | `ClipboardBridge-macos-arm64.tar.gz` |
+          
+          > **注意**: macOS Intel 版本需要本地编译或使用付费 GitHub runner。
           
           ### 📥 下载说明
           

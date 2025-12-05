@@ -8,7 +8,9 @@
 |------|------|------------|----------|------------|
 | Windows | x64 | ✅ 系统级 | ✅ 自动 | ✅ 自动 |
 | Linux | x64 | ⚡ 轮询 | 📝 手动 | 📝 手动 |
-| macOS | Intel / Apple Silicon | ⚡ 轮询 | 📝 手动 | 📝 手动 |
+| macOS | Apple Silicon (M1/M2/M3) | ⚡ 轮询 | 📝 手动 | 📝 手动 |
+
+> **macOS Intel 用户**: 可以使用 Rosetta 2 运行 ARM64 版本（性能几乎无差异），或[从源码编译](#从源码编译)
 
 ## ✨ 主要功能
 
@@ -31,8 +33,9 @@
 2. 根据你的系统下载对应的文件:
    - **Windows x64**: `ClipboardBridge-windows-amd64.zip`
    - **Linux x64**: `ClipboardBridge-linux-amd64.tar.gz`
-   - **macOS Intel**: `ClipboardBridge-macos-amd64.tar.gz`
-   - **macOS Apple Silicon (M1/M2/M3)**: `ClipboardBridge-macos-arm64.tar.gz`
+   - **macOS (M1/M2/M3)**: `ClipboardBridge-macos-arm64.tar.gz`
+
+> **注意**: macOS Intel 用户需要使用 Rosetta 2 运行 ARM64 版本，或[从源码编译](#从源码编译)
 
 **Windows 安装:**
 ```powershell

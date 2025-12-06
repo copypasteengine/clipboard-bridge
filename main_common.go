@@ -164,9 +164,9 @@ func initLogger() {
 	log.SetOutput(io.MultiWriter(os.Stdout, logFile))
 	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
 
-	logInfo("========================================")
-	logInfo("程序启动，日志文件: " + logPath)
-	logInfo("========================================")
+	logInfo(t("log_separator"))
+	logInfo(t("program_start", logPath))
+	logInfo(t("log_separator"))
 }
 
 func shouldLog(level string) bool {
@@ -453,11 +453,11 @@ func startServer() {
 
 	localIP := getLocalIP()
 	go func() {
-		logInfo(fmt.Sprintf("🚀 剪贴板服务已启动"))
-		logInfo(fmt.Sprintf("   外部访问: http://%s:%d", localIP, port))
-		logInfo(fmt.Sprintf("   本机访问: http://localhost:%d", port))
+		logInfo(t("service_started"))
+		logInfo(t("external_access", localIP, port))
+		logInfo(t("local_access", port))
 		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			logError("服务错误", err)
+			logError(t("error_server"), err)
 		}
 	}()
 }
@@ -468,10 +468,10 @@ func stopServer() {
 		defer cancel()
 
 		if err := server.Shutdown(ctx); err != nil {
-			logError("服务器关闭错误", err)
+			logError(t("error_server_close"), err)
 			server.Close() // 强制关闭
 		}
-		logInfo("剪贴板服务已停止")
+		logInfo(t("service_stopped"))
 	}
 }
 
@@ -493,7 +493,7 @@ func checkToken(r *http.Request) bool {
 // ------------------ 托盘 UI ------------------
 
 func onReady() {
-	systray.SetTitle("Clipboard Bridge")
+	systray.SetTitle(t("app_title"))
 
 	cfgMu.RLock()
 	port := cfg.Port
@@ -501,24 +501,24 @@ func onReady() {
 	cfgMu.RUnlock()
 
 	localIP := getLocalIP()
-	systray.SetTooltip(fmt.Sprintf("剪贴板同步服务 - %s:%d", localIP, port))
+	systray.SetTooltip(fmt.Sprintf("%s - %s:%d", t("app_title"), localIP, port))
 
 	icon, _ := loadIcon()
 	systray.SetIcon(icon)
 
-	mInfo := systray.AddMenuItem(fmt.Sprintf("📡 服务地址: http://%s:%d", localIP, port), "外部设备通过此地址访问")
+	mInfo := systray.AddMenuItem(t("service_address", fmt.Sprintf("http://%s:%d", localIP, port)), t("ext_access"))
 	mInfo.Disable()
-	mLocal := systray.AddMenuItem(fmt.Sprintf("💻 本机地址: http://localhost:%d", port), "本机测试使用")
+	mLocal := systray.AddMenuItem(t("local_address", fmt.Sprintf("http://localhost:%d", port)), t("local_test"))
 	mLocal.Disable()
 	systray.AddSeparator()
 
-	mAuto := systray.AddMenuItemCheckbox("🚀 开机自启", "", autoStart)
-	mStart := systray.AddMenuItem("▶️  启动服务", "")
-	mStop := systray.AddMenuItem("⏸️  停止服务", "")
+	mAuto := systray.AddMenuItemCheckbox(t("auto_start"), "", autoStart)
+	mStart := systray.AddMenuItem(t("start_service"), "")
+	mStop := systray.AddMenuItem(t("stop_service"), "")
 	systray.AddSeparator()
-	mLog := systray.AddMenuItem("📄 打开日志文件", "")
+	mLog := systray.AddMenuItem(t("open_log"), "")
 	systray.AddSeparator()
-	mQuit := systray.AddMenuItem("❌ 退出", "")
+	mQuit := systray.AddMenuItem(t("quit"), "")
 
 	// 自动启动服务
 	startServer()
@@ -591,12 +591,12 @@ func maskToken(token string) string {
 // ------------------ main ------------------
 
 func main() {
+	initLanguage()  // 初始化语言
 	initLogger()
 	loadConfig()
 
 	cfgMu.RLock()
-	logInfo(fmt.Sprintf("配置加载完成: Port=%d, Token=%s, AutoStart=%v, LogLevel=%s",
-		cfg.Port, maskToken(cfg.Token), cfg.AutoStart, cfg.LogLevel))
+	logInfo(t("config_loaded", cfg.Port, maskToken(cfg.Token), cfg.AutoStart, cfg.LogLevel))
 	cfgMu.RUnlock()
 
 	go initClipboardListener()

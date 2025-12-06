@@ -1,71 +1,73 @@
-# 📋 Clipboard Bridge - 跨设备剪贴板同步
+# 📋 Clipboard Bridge - Cross-Device Clipboard Sync
 
-一个轻量级的剪贴板同步解决方案，通过 HTTP API 实现电脑与手机之间的无缝剪贴板共享。
+[中文文档](./README.zh-CN.md) | English
 
-## 🎯 适用场景
+A lightweight clipboard synchronization solution that enables seamless clipboard sharing between computers and mobile devices via HTTP API.
 
-### ✅ 推荐使用场景
+## 🎯 Use Cases
+
+### ✅ Recommended Scenarios
 
 **📱 Android + 🖥️ Windows/Linux/macOS**
-- ✅ **Android 手机与任意系统电脑同步**
-- ✅ 提供完整的原生 Android App
-- ✅ Material Design 3 现代化界面
-- ✅ 一键同步，体验流畅
+- ✅ **Sync Android phone with any OS computer**
+- ✅ Full-featured native Android App
+- ✅ Modern Material Design 3 interface
+- ✅ One-tap sync, smooth experience
 
-**📱 iPhone + 🪟 Windows / 🐧 Linux**  
-- ✅ **iOS 与 Windows/Linux 电脑同步**
-- ✅ 通过 iOS 快捷指令实现
-- ✅ 支持 Siri 语音控制
-- ✅ 可添加到主屏幕小组件
+**📱 iPhone + 🪟 Windows / 🐧 Linux**
+- ✅ **Sync iOS with Windows/Linux computers**
+- ✅ Implemented via iOS Shortcuts
+- ✅ Siri voice control support
+- ✅ Home screen widget support
 
-### 💡 不推荐场景
+### 💡 Not Recommended
 
 **📱 iPhone + 🍎 Mac**
-- ⚠️ Apple 生态内建 Universal Clipboard（通用剪贴板）
-- ⚠️ iCloud 自动同步，体验更好
-- ⚠️ 无需第三方工具
+- ⚠️ Apple ecosystem has built-in Universal Clipboard
+- ⚠️ iCloud auto-sync, better experience
+- ⚠️ No third-party tools needed
 
-> **说明**: macOS 和 iOS 之间已有苹果原生的剪贴板同步功能，建议直接使用系统功能。本项目主要解决**跨生态**（Android ↔ 电脑，iOS ↔ Windows/Linux）的剪贴板同步需求。
+> **Note**: macOS and iOS already have native clipboard sync via iCloud. This project primarily solves **cross-ecosystem** clipboard sync needs (Android ↔ Computer, iOS ↔ Windows/Linux).
 
-## ✨ 主要特性
+## ✨ Key Features
 
-- 🌐 **HTTP REST API** - 简单易用，任何设备都能访问
-- 📱 **Android 原生 App** - Material Design 3 精美界面
-- 🔄 **智能同步** - 自动判断同步方向
-- 🔒 **Token 认证** - 可选的访问令牌保护
-- 📊 **系统托盘** - 友好的托盘图标和菜单
-- ⚡ **轻量高效** - CPU <0.1%，内存 ~15MB
-- 📝 **完整日志** - 便于故障排查
+- 🌐 **HTTP REST API** - Simple and accessible from any device
+- 📱 **Native Android App** - Beautiful Material Design 3 UI
+- 🔄 **Smart Sync** - Auto-detect sync direction
+- 🔒 **Token Authentication** - Optional access token protection
+- 📊 **System Tray** - User-friendly tray icon and menu
+- ⚡ **Lightweight** - CPU <0.1%, Memory ~15MB
+- 📝 **Complete Logging** - Easy troubleshooting
 
-## 🖥️ 支持的平台
+## 🖥️ Supported Platforms
 
-### 桌面服务
+### Desktop Service
 
-| 平台 | 架构 | 剪贴板监听 | 开机自启 |
-|------|------|------------|----------|
-| Windows | x64 | ✅ 系统级（实时） | ✅ 自动配置 |
-| Linux | x64 | ⚡ 轮询（1秒） | 📝 手动配置 |
-| macOS | Apple Silicon | ⚡ 轮询（1秒） | 📝 手动配置 |
+| Platform | Architecture | Clipboard Monitoring | Auto-Start |
+|----------|--------------|---------------------|------------|
+| Windows | x64 | ✅ System-level (Real-time) | ✅ Auto-config |
+| Linux | x64 | ⚡ Polling (1s interval) | 📝 Manual |
+| macOS | Apple Silicon | ⚡ Polling (1s interval) | 📝 Manual |
 
-### 移动客户端
+### Mobile Clients
 
-| 平台 | 类型 | 功能 |
-|------|------|------|
-| Android | 原生 App (APK) | 智能同步、配置保存、实时预览 |
-| iOS | 快捷指令 | 智能同步、Siri 控制、自动化 |
+| Platform | Type | Features |
+|----------|------|----------|
+| Android | Native App (APK) | Smart sync, Config save, Real-time preview |
+| iOS | Shortcuts | Smart sync, Siri control, Automation |
 
-## 📥 快速开始
+## 📥 Quick Start
 
-### 第一步：安装桌面服务
+### Step 1: Install Desktop Service
 
-访问 [Releases 页面](https://github.com/copypasteengine/clipboard-bridge/releases) 下载：
+Visit [Releases](https://github.com/copypasteengine/clipboard-bridge/releases) to download:
 
 **Windows:**
 ```powershell
-# 1. 下载 clipboard-bridge-windows-amd64.zip
-# 2. 解压到任意文件夹
-# 3. 双击 clipboard-bridge.exe
-# 4. 查看系统托盘图标 ✓
+# 1. Download clipboard-bridge-windows-amd64.zip
+# 2. Extract to any folder
+# 3. Double-click clipboard-bridge.exe
+# 4. Check system tray icon ✓
 ```
 
 **Linux:**
@@ -84,108 +86,134 @@ chmod +x clipboard-bridge
 ./clipboard-bridge
 ```
 
-### 第二步：安装手机客户端
+### Step 2: Install Mobile Client
 
-#### Android - 原生 App（推荐 ⭐）
+#### Android - Native App (Recommended ⭐)
 
-1. **下载安装 APK**
-   - 下载 `clipboard-bridge-android-v1.0.0-debug.apk`
-   - 在设置中允许安装未知应用
-   - 安装 APK
+1. **Download and Install APK**
+   - Download `clipboard-bridge-android-v1.0.0-debug.apk`
+   - Enable "Install unknown apps" in Settings
+   - Install the APK
 
-2. **配置服务器**
-   - 打开 App
-   - 点击右上角 ⚙️ 图标
-   - 输入电脑 IP：`http://192.168.1.100:5678`
-   - 保存
+2. **Configure Server**
+   - Open the App
+   - Tap ⚙️ icon in top-right corner
+   - Enter your PC IP: `http://192.168.1.100:5678`
+   - Save
 
-3. **开始同步**
-   - 点击"智能同步"按钮
-   - ✓ 完成！
+3. **Start Syncing**
+   - Tap "Smart Sync" button
+   - ✓ Done!
 
-**App 功能：**
-- ✅ 一键获取电脑剪贴板
-- ✅ 一键发送到电脑
-- ✅ 智能同步（自动判断方向）
-- ✅ 实时显示两端剪贴板内容
-- ✅ 自动保存配置
-- ✅ Material Design 3 界面
+**App Features:**
+- ✅ One-tap pull from PC
+- ✅ One-tap push to PC
+- ✅ Smart sync (auto-detect direction)
+- ✅ Real-time clipboard preview on both sides
+- ✅ Auto-save configuration
+- ✅ Material Design 3 interface
 
-#### iOS - 快捷指令
+#### iOS - Shortcuts
 
-**基础配置（从电脑获取）:**
-```
-1. 打开"快捷指令" App
-2. 创建新快捷指令
-3. 添加动作：
-   - "获取 URL 的内容"
-     URL: http://你的电脑IP:5678/pull
-     方法: GET
-   - "设定剪贴板"
-   - "显示通知": ✓ 已同步
-```
+**Applicable:** iOS with Windows/Linux computers
 
-详细配置参见文档末尾的 [iOS 快捷指令配置](#ios---快捷指令配置)
+> **Tip**: If you use iPhone + Mac, use Apple's Universal Clipboard instead (requires same iCloud account).
 
-## 🎯 使用场景示例
+**Quick Setup - Pull from PC:**
 
-### 场景 1: 在手机上打开电脑复制的网址
+1. Open "Shortcuts" App → Tap "+"
+2. Add these actions:
 
 ```
-1. 在电脑浏览器复制网址
-2. 在手机 App 点击"从电脑获取"
-3. 在手机浏览器粘贴打开
+Get Contents of URL
+  URL: http://192.168.1.100:5678/pull
+  Method: GET
+  (If token is set, add header: X-Auth-Token)
+
+Set Clipboard
+  Content: [Get Contents of URL result]
+
+Show Notification
+  Content: ✓ Synced from PC
 ```
 
-### 场景 2: 将手机上的验证码发送到电脑
+**Quick Setup - Push to PC:**
 
 ```
-1. 手机收到短信验证码，复制
-2. 点击"发送到电脑"
-3. 在电脑上粘贴验证码
+Get Clipboard
+
+Get Contents of URL
+  URL: http://192.168.1.100:5678/push
+  Method: POST
+  Request Body: Form
+  Field: text = [Clipboard]
+  (If token is set, add header: X-Auth-Token)
+
+Show Notification
+  Content: ✓ Sent to PC
 ```
 
-### 场景 3: 编辑文档时跨设备复制内容
+See [iOS Shortcuts Configuration](#ios-shortcuts-configuration) at the end of this document for details.
+
+## 🎯 Usage Examples
+
+### Example 1: Open PC's Copied URL on Phone
 
 ```
-1. 在手机上看到有用的文字，复制
-2. 智能同步到电脑
-3. 在电脑 Word 文档中粘贴
+1. Copy a URL in PC browser
+2. Tap "Pull from PC" on phone App
+3. Paste and open in phone browser
 ```
 
-## 🔌 API 接口
+### Example 2: Send Phone's Verification Code to PC
 
-桌面服务提供 REST API，可以被任何客户端访问：
+```
+1. Receive SMS code on phone, copy it
+2. Tap "Push to PC"
+3. Paste the code on PC
+```
 
-### 获取剪贴板
+### Example 3: Cross-Device Content Editing
+
+```
+1. Find useful text on phone, copy it
+2. Smart sync to PC
+3. Paste into Word document on PC
+```
+
+## 🔌 API Reference
+
+The desktop service provides REST API accessible from any client:
+
+### Get Clipboard
 
 ```http
-GET http://电脑IP:5678/pull
+GET http://PC_IP:5678/pull
 X-Auth-Token: your-token
 ```
 
-**响应：** 剪贴板文本内容
+**Response:** Clipboard text content
 
-### 设置剪贴板
+### Set Clipboard
 
 ```http
-POST http://电脑IP:5678/push
+POST http://PC_IP:5678/push
 X-Auth-Token: your-token
 Content-Type: application/x-www-form-urlencoded
 
 text=Hello World
 ```
 
-**响应：** `OK`
+**Response:** `OK`
 
-### 获取元数据
+### Get Metadata
 
 ```http
-GET http://电脑IP:5678/meta
+GET http://PC_IP:5678/meta
 X-Auth-Token: your-token
 ```
 
-**响应：**
+**Response:**
 ```json
 {
   "text": "Hello World",
@@ -193,18 +221,18 @@ X-Auth-Token: your-token
 }
 ```
 
-### 健康检查
+### Health Check
 
 ```http
-GET http://电脑IP:5678/ping
+GET http://PC_IP:5678/ping
 X-Auth-Token: your-token
 ```
 
-**响应：** `PONG`
+**Response:** `PONG`
 
-## ⚙️ 配置文件
+## ⚙️ Configuration
 
-程序首次运行会创建 `config.json`：
+First run creates `config.json`:
 
 ```json
 {
@@ -216,132 +244,41 @@ X-Auth-Token: your-token
 }
 ```
 
-| 配置项 | 默认值 | 说明 |
-|--------|--------|------|
-| `port` | 5678 | 服务端口（1024-65535） |
-| `token` | "" | API 令牌，空则不验证 |
-| `auto_start` | true | 开机自启（Windows 自动配置） |
-| `auto_firewall` | true | 自动防火墙规则（仅 Windows） |
-| `log_level` | "info" | 日志级别：debug/info/error |
+| Option | Default | Description |
+|--------|---------|-------------|
+| `port` | 5678 | Service port (1024-65535) |
+| `token` | "" | API token, empty to disable auth |
+| `auto_start` | true | Auto-start on boot (Windows auto-config) |
+| `auto_firewall` | true | Auto firewall rules (Windows only) |
+| `log_level` | "info" | Log level: debug/info/error |
 
-## 📱 移动端详细说明
+## 📊 System Tray Menu
 
-### Android App（推荐使用 ⭐⭐⭐）
+Right-click the tray icon:
 
-**下载安装：**
-1. 从 [Releases](https://github.com/copypasteengine/clipboard-bridge/releases) 下载 APK
-2. 在手机上安装（需允许未知来源）
-3. 打开 App 并配置服务器地址
+| Menu Item | Function |
+|-----------|----------|
+| 📡 Service Address | Show external access address |
+| 💻 Local Address | Show localhost address |
+| 🚀 Auto-Start | Toggle auto-start (Windows) |
+| ▶️ Start/Stop Service | Manual control |
+| 📄 Open Log File | View logs |
+| ❌ Exit | Quit program |
 
-**功能特性：**
-- 🎨 **Material Design 3** - 现代化界面
-- 🔄 **智能同步** - 自动判断同步方向
-- 👀 **实时预览** - 同时显示手机和电脑剪贴板
-- 💾 **配置保存** - 自动记住服务器设置
-- 🌓 **深色模式** - 跟随系统主题
-- ⚡ **一键操作** - 简单快捷
+## 🔒 Security
 
-**界面预览：**
-```
-┌──────────────────────────┐
-│ Clipboard Bridge     ⚙️  │
-├──────────────────────────┤
-│ ● 已连接              🔄 │
-│ http://192.168.1.100:5678│
-├──────────────────────────┤
-│ 📱 手机剪贴板         🔄 │
-│ Hello from phone         │
-├──────────────────────────┤
-│ 💻 电脑剪贴板         🔄 │
-│ Hello from PC            │
-│ 更新: 2分钟前            │
-├──────────────────────────┤
-│  [ ⬇️  从电脑获取 ]      │
-│  [ ⬆️  发送到电脑 ]      │
-│  [ 🔄  智能同步 ]        │
-└──────────────────────────┘
-```
+### Basic Security
 
-**使用步骤：**
-1. 复制内容到手机或电脑
-2. 打开 App，点击对应按钮
-3. 内容已同步 ✓
-
-详细说明：[android-app/README.md](./android-app/README.md)
-
-### iOS 快捷指令配置
-
-**适用场景：** iOS 与 Windows/Linux 电脑同步
-
-> **提示**: 如果你使用 iPhone + Mac 组合，建议直接使用 Apple 的通用剪贴板功能（需登录同一 iCloud 账号），无需本工具。
-
-**快速配置 - 从电脑获取：**
-
-1. 打开"快捷指令" App → 点击 "+"
-2. 添加以下动作：
-
-```
-获取 URL 的内容
-  URL: http://192.168.1.100:5678/pull
-  方法: GET
-  (如果设置了 Token，添加标头: X-Auth-Token)
-
-设定剪贴板
-  内容: [获取 URL 的内容结果]
-
-显示通知
-  内容: ✓ 已从电脑同步
-```
-
-**快速配置 - 发送到电脑：**
-
-```
-获取剪贴板
-
-获取 URL 的内容
-  URL: http://192.168.1.100:5678/push
-  方法: POST
-  请求体: 表单
-  字段: text = [剪贴板]
-  (如果设置了 Token，添加标头: X-Auth-Token)
-
-显示通知
-  内容: ✓ 已发送到电脑
-```
-
-**使用方法：**
-- 直接运行快捷指令
-- 对 Siri 说"运行剪贴板同步"
-- 添加到主屏幕小组件
-- 设置自动化触发
-
-## 📊 系统托盘菜单
-
-右键点击托盘图标：
-
-| 菜单项 | 功能 |
-|--------|------|
-| 📡 服务地址 | 显示外部访问地址（如 `http://192.168.1.100:5678`） |
-| 💻 本机地址 | 显示本机测试地址 |
-| 🚀 开机自启 | 切换开机自启状态（Windows） |
-| ▶️ 启动/停止服务 | 手动控制服务 |
-| 📄 打开日志文件 | 查看运行日志 |
-| ❌ 退出 | 退出程序 |
-
-## 🔒 安全建议
-
-### 基础安全
-
-1. **设置 Token** - 在 `config.json` 中设置 `token`，防止未授权访问
-2. **局域网使用** - 仅在家庭/办公室可信网络使用
-3. **防火墙配置**
-   - Windows: 程序自动添加规则
+1. **Set Token** - Configure `token` in `config.json` to prevent unauthorized access
+2. **LAN Only** - Use only in trusted networks (home/office)
+3. **Firewall**
+   - Windows: Auto-configured by the program
    - Linux: `sudo ufw allow 5678/tcp`
-   - macOS: 系统设置 → 防火墙
+   - macOS: System Settings → Firewall
 
-### 高级安全
+### Advanced Security
 
-如需加密传输，可配置 Nginx/Caddy 反向代理：
+For encrypted transmission, configure reverse proxy with Nginx/Caddy:
 
 ```nginx
 server {
@@ -355,32 +292,32 @@ server {
 }
 ```
 
-## 🐛 常见问题
+## 🐛 Troubleshooting
 
-### Q1: 手机无法连接
+### Q1: Phone Cannot Connect
 
-**检查清单：**
-- [ ] 手机和电脑在同一 WiFi 网络
-- [ ] 电脑防火墙允许 5678 端口
-- [ ] 使用电脑的局域网 IP（如 192.168.1.100）
-- [ ] 桌面服务正在运行（查看托盘图标）
+**Checklist:**
+- [ ] Phone and PC on same WiFi
+- [ ] PC firewall allows port 5678
+- [ ] Using PC's LAN IP (e.g., 192.168.1.100, not 127.0.0.1)
+- [ ] Desktop service is running (check tray icon)
 
-**测试方法：**
-在手机浏览器访问 `http://电脑IP:5678/ping`，如果显示 `PONG`，说明连接正常。
+**Test Method:**  
+Visit `http://PC_IP:5678/ping` in phone browser. If it shows `PONG`, connection is OK.
 
-### Q2: Token 验证失败
+### Q2: Token Verification Failed
 
-- 确保 Token 完全一致（区分大小写）
-- Android: 在设置对话框中输入 Token
-- iOS: 在快捷指令中添加 HTTP 头 `X-Auth-Token`
+- Ensure tokens match exactly (case-sensitive)
+- Android: Enter token in Settings dialog
+- iOS: Add HTTP header `X-Auth-Token` in Shortcuts
 
-### Q3: 中文乱码
+### Q3: Chinese Text Garbled
 
-服务端使用 UTF-8 编码，不应该有乱码。如遇到请提交 Issue。
+Service uses UTF-8 encoding, should work fine. Please submit an Issue if you encounter this.
 
-### Q4: Linux 剪贴板不工作
+### Q4: Linux Clipboard Not Working
 
-安装依赖：
+Install dependencies:
 ```bash
 # Ubuntu/Debian (X11)
 sudo apt-get install xclip
@@ -389,19 +326,19 @@ sudo apt-get install xclip
 sudo apt-get install wl-clipboard
 ```
 
-## 🛠️ 从源码编译
+## 🛠️ Build from Source
 
-### 桌面服务
+### Desktop Service
 
 ```bash
-# 克隆仓库
+# Clone repository
 git clone https://github.com/copypasteengine/clipboard-bridge.git
 cd clipboard-bridge
 
-# 安装依赖
+# Install dependencies
 go mod download
 
-# 编译
+# Build
 # Windows
 go build -ldflags="-H windowsgui" -o clipboard-bridge.exe
 
@@ -409,7 +346,7 @@ go build -ldflags="-H windowsgui" -o clipboard-bridge.exe
 go build -o clipboard-bridge
 ```
 
-**Linux 额外依赖：**
+**Linux Dependencies:**
 ```bash
 sudo apt-get install xclip libgtk-3-dev  # Ubuntu/Debian
 ```
@@ -419,62 +356,62 @@ sudo apt-get install xclip libgtk-3-dev  # Ubuntu/Debian
 ```bash
 cd android-app
 
-# 使用 Android Studio 打开项目
-# 或命令行构建：
+# Open with Android Studio
+# Or build via command line:
 ./gradlew assembleDebug
 
-# APK 位置：app/build/outputs/apk/debug/app-debug.apk
+# APK location: app/build/outputs/apk/debug/app-debug.apk
 ```
 
-详细构建说明：[android-app/BUILDING.md](./android-app/BUILDING.md)
+See [android-app/BUILDING.md](./android-app/BUILDING.md) for details.
 
-## 📝 日志文件
+## 📝 Log Files
 
-日志位置：`clipboard_bridge.log`（程序同目录）
+Log location: `clipboard_bridge.log` (same directory as executable)
 
-**查看日志：**
-- Windows: 托盘菜单 → "📄 打开日志文件"
+**View Logs:**
+- Windows: Tray menu → "📄 Open Log File"
 - Linux/macOS: `tail -f clipboard_bridge.log`
 
-**示例日志：**
+**Example:**
 ```
-[2024-12-05 10:30:15] [INFO] 程序启动
-[2024-12-05 10:30:15] [INFO] 🚀 剪贴板服务已启动
-[2024-12-05 10:30:15] [INFO]    外部访问: http://192.168.1.100:5678
-[2024-12-05 10:31:20] [INFO] 收到 Push 请求 (来自 192.168.1.200)
-[2024-12-05 10:31:20] [INFO] ✓ 成功写入剪贴板，15 字节
+[2024-12-05 10:30:15] [INFO] Program started
+[2024-12-05 10:30:15] [INFO] 🚀 Clipboard service started
+[2024-12-05 10:30:15] [INFO]    External: http://192.168.1.100:5678
+[2024-12-05 10:31:20] [INFO] Push request from 192.168.1.200
+[2024-12-05 10:31:20] [INFO] ✓ Clipboard updated, 15 bytes
 ```
 
-## 🔧 技术栈
+## 🔧 Tech Stack
 
-**桌面服务：**
+**Desktop Service:**
 - Go 1.20 + CGo
-- getlantern/systray（系统托盘）
-- atotto/clipboard（剪贴板）
-- net/http（HTTP 服务器）
+- getlantern/systray (System tray)
+- atotto/clipboard (Clipboard access)
+- net/http (HTTP server)
 
-**Android App：**
+**Android App:**
 - Kotlin + Jetpack Compose
 - Material Design 3
-- OkHttp（HTTP 客户端）
-- Coroutines（异步）
-- DataStore（配置）
+- OkHttp (HTTP client)
+- Coroutines (Async)
+- DataStore (Config storage)
 
-## 📚 相关文档
+## 📚 Documentation
 
-- **[QUICKSTART.md](./QUICKSTART.md)** - 5 分钟快速上手指南 ⭐
-- **[ANDROID.md](./ANDROID.md)** - Android HTTP Shortcuts 详细配置
-- **[android-app/README.md](./android-app/README.md)** - Android App 使用说明
-- **[android-app/BUILDING.md](./android-app/BUILDING.md)** - Android App 开发指南
-- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - 系统架构设计文档
+- **[QUICKSTART.md](./QUICKSTART.md)** - 5-minute setup guide ⭐
+- **[ANDROID.md](./ANDROID.md)** - Android HTTP Shortcuts guide
+- **[android-app/README.md](./android-app/README.md)** - Android App manual
+- **[android-app/BUILDING.md](./android-app/BUILDING.md)** - Android development guide
+- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - System architecture
 
-## 📄 许可证
+## 📄 License
 
 MIT License
 
-## 🤝 贡献
+## 🤝 Contributing
 
-欢迎提交 Issue 和 Pull Request！
+Issues and Pull Requests are welcome!
 
 - **GitHub**: https://github.com/copypasteengine/clipboard-bridge
 - **Issues**: https://github.com/copypasteengine/clipboard-bridge/issues
@@ -482,77 +419,78 @@ MIT License
 
 ---
 
-## 📱 iOS 快捷指令配置
+## 📱 iOS Shortcuts Configuration
 
-### 基本配置 - 从电脑获取
+### Basic Setup - Pull from PC
 
-1. 打开"快捷指令" App
-2. 点击右上角 "+"
-3. 添加以下动作：
+1. Open "Shortcuts" App
+2. Tap "+" in top-right
+3. Add these actions:
 
 ```
-"获取 URL 的内容"
-  URL: http://192.168.1.100:5678/pull  ← 改为你的电脑 IP
-  方法: GET
+"Get Contents of URL"
+  URL: http://192.168.1.100:5678/pull  ← Replace with your PC IP
+  Method: GET
   
-  如果设置了 Token，点击"显示更多" → 打开"标头"
-    添加标头: X-Auth-Token = your-token
+  If token is set, tap "Show More" → Enable "Headers"
+    Add header: X-Auth-Token = your-token
 
-"设定剪贴板"
-  内容: [获取 URL 的内容]
+"Set Clipboard"
+  Content: [Get Contents of URL]
 
-"显示通知"
-  内容: ✓ 已从电脑同步
+"Show Notification"
+  Content: ✓ Synced from PC
 ```
 
-### 基本配置 - 发送到电脑
+### Basic Setup - Push to PC
 
 ```
-"获取剪贴板"
+"Get Clipboard"
 
-"获取 URL 的内容"
-  URL: http://192.168.1.100:5678/push  ← 改为你的电脑 IP
-  方法: POST
-  请求体: 表单
-  添加字段: text = [剪贴板]
+"Get Contents of URL"
+  URL: http://192.168.1.100:5678/push  ← Replace with your PC IP
+  Method: POST
+  Request Body: Form
+  Add field: text = [Clipboard]
   
-  如果设置了 Token:
-    添加标头: X-Auth-Token = your-token
+  If token is set:
+    Add header: X-Auth-Token = your-token
 
-"显示通知"
-  内容: ✓ 已发送到电脑
+"Show Notification"
+  Content: ✓ Sent to PC
 ```
 
-### 进阶配置 - 智能同步
+### Advanced - Smart Sync
 
-创建一个能自动判断方向的快捷指令：
+Create an intelligent shortcut that auto-detects sync direction:
 
-1. 获取电脑剪贴板（`/meta` 接口）
-2. 获取 iPhone 剪贴板
-3. 比较内容自动处理：
-   - 相同 → 提示"已同步"
-   - iPhone 为空 → 从电脑同步
-   - 电脑为空 → 发送到电脑
-   - 都有但不同 → 弹出选择菜单
+1. Get PC clipboard (`/meta` endpoint)
+2. Get iPhone clipboard
+3. Compare and auto-handle:
+   - Same → Show "Already synced"
+   - iPhone empty → Pull from PC
+   - PC empty → Push to PC
+   - Both different → Show selection menu
 
-### 使用技巧
+### Usage Tips
 
-**添加到主屏幕：**
-- 长按主屏幕 → 小组件 → 快捷指令
-- 选择你的剪贴板同步快捷指令
+**Add to Home Screen:**
+- Long-press home screen → Widgets → Shortcuts
+- Select your clipboard sync shortcut
 
-**Siri 语音：**
-- "嘿 Siri，运行剪贴板同步"
+**Siri Voice:**
+- "Hey Siri, run clipboard sync"
 
-**自动化触发：**
-- 连接特定 WiFi 时自动运行
-- 打开特定 App 时自动运行
+**Automation:**
+- Auto-run when connecting to specific WiFi
+- Auto-run when opening specific apps
 
 ---
 
-**享受跨设备剪贴板同步的便利！** 🎉
+**Enjoy seamless cross-device clipboard sync!** 🎉
 
-**主要使用场景：**
-- ✅ **Android ↔ Windows/Linux/macOS** - 使用 Android App
-- ✅ **iOS ↔ Windows/Linux** - 使用快捷指令
-- ⚠️ **iOS ↔ macOS** - 建议使用 Apple 通用剪贴板
+**Primary Use Cases:**
+- ✅ **Android ↔ Windows/Linux/macOS** - Use Android App
+- ✅ **iOS ↔ Windows/Linux** - Use Shortcuts
+- ⚠️ **iOS ↔ macOS** - Use Apple Universal Clipboard instead
+

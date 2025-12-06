@@ -51,8 +51,8 @@ func GoClipboardChanged() {
 	if text != lastClipboard {
 		lastClipboard = text
 		lastUpdated = time.Now().Unix()
-		logInfo(fmt.Sprintf("检测到本地剪贴板更新，内容长度: %d 字节", len(text)))
-		logDebug(fmt.Sprintf("剪贴板内容详情: %s", getPreview(text)))
+		logInfo(t("clipboard_updated", len(text)))
+		logDebug(t("clipboard_preview", getPreview(text)))
 	}
 }
 
@@ -85,7 +85,7 @@ func initClipboardListener() {
 
 	C.AddClipboardFormatListener(hwndListener)
 
-	logInfo("剪贴板监听已启动")
+	logInfo(t("clipboard_listener"))
 }
 
 // openLogFile 使用记事本打开日志文件 (Windows)
@@ -121,13 +121,13 @@ func updateAutostart() {
 
 	if autoStart {
 		if err := k.SetStringValue(runValueName, exePath); err != nil {
-			logError("写入开机自启失败", err)
+			logError(t("error_auto_start"), err)
 		} else {
-			logInfo("✓ 已设置开机自启")
+			logInfo(t("auto_start_enabled"))
 		}
 	} else {
 		_ = k.DeleteValue(runValueName)
-		logInfo("✓ 已取消开机自启")
+		logInfo(t("auto_start_disabled"))
 	}
 
 	// 保存配置到文件
@@ -156,9 +156,9 @@ func ensureFirewallRule() {
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {
-		logInfo("添加防火墙规则失败（可能需要管理员权限或规则已存在）")
+		logInfo(t("firewall_added"))
 	} else {
-		logInfo("已尝试添加防火墙规则")
+		logInfo(t("firewall_added"))
 	}
 }
 

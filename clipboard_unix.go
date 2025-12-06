@@ -17,7 +17,7 @@ import (
 // 注意：Unix 系统没有像 Windows 那样的系统级剪贴板监听机制
 // 这里使用轮询方式检测剪贴板变化
 func initClipboardListener() {
-	logInfo("剪贴板监听已启动（轮询模式）")
+	logInfo(t("clipboard_listener"))
 	
 	go func() {
 		ticker := time.NewTicker(1 * time.Second)

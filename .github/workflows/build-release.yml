@@ -163,61 +163,78 @@ jobs:
         body: |
           ## 📦 Clipboard Bridge ${{ steps.version.outputs.VERSION }}
           
-          ### 🎯 桌面版本
+          [中文说明](https://github.com/copypasteengine/clipboard-bridge/blob/main/README.zh-CN.md) | [Documentation](https://github.com/copypasteengine/clipboard-bridge#readme)
           
-          | 平台 | 架构 | 文件 |
-          |------|------|------|
+          Cross-device clipboard sync solution with desktop service and native Android app.
+          
+          ### 🖥️ Desktop Versions
+          
+          | Platform | Architecture | File |
+          |----------|--------------|------|
           | Windows | x64 | `clipboard-bridge-windows-amd64.zip` |
           | Linux | x64 | `clipboard-bridge-linux-amd64.tar.gz` |
-          | macOS | Apple Silicon (M1/M2/M3) | `clipboard-bridge-macos-arm64.tar.gz` |
+          | macOS | Apple Silicon | `clipboard-bridge-macos-arm64.tar.gz` |
           
-          ### 📱 移动版本
+          ### 📱 Mobile Versions
           
-          | 平台 | 文件 | 说明 |
-          |------|------|------|
-          | Android | `clipboard-bridge-android-*-debug.apk` | Debug 版本，开箱即用 |
-          | iOS | - | 使用快捷指令（见文档） |
+          | Platform | File | Note |
+          |----------|------|------|
+          | Android | `clipboard-bridge-android-*-debug.apk` | Ready to install |
+          | iOS | - | Use Shortcuts (see docs) |
           
-          > **注意**: 
-          > - macOS Intel 版本需要本地编译或使用付费 GitHub runner
-          > - Android Release 版本需要配置签名密钥
+          > **Note**: 
+          > - macOS Intel version requires local build
+          > - Android Release APK requires signing configuration
           
-          ### 📥 下载说明
+          ### 📥 Installation
           
-          **🖥️ 桌面版本:**
+          **🖥️ Desktop:**
           
           **Windows:**
-          1. 下载 `clipboard-bridge-windows-amd64.zip`
-          2. 解压并运行 `clipboard-bridge.exe`
+          1. Download `clipboard-bridge-windows-amd64.zip`
+          2. Extract and run `clipboard-bridge.exe`
+          3. Service starts automatically on port 5678
           
           **Linux / macOS:**
-          1. 下载对应平台的 `.tar.gz` 文件
-          2. 解压: `tar -xzf clipboard-bridge-*.tar.gz`
-          3. 添加执行权限: `chmod +x clipboard-bridge`
-          4. 运行: `./clipboard-bridge`
+          ```bash
+          tar -xzf clipboard-bridge-*.tar.gz
+          chmod +x clipboard-bridge
+          ./clipboard-bridge
+          ```
           
-          **📱 Android 版本:**
-          1. 下载 `clipboard-bridge-android-*-debug.apk`
-          2. 在 Android 设备上安装
-          3. 打开应用，配置服务器地址
-          4. 开始同步！
+          **📱 Android:**
+          1. Download `clipboard-bridge-android-*-debug.apk`
+          2. Install on Android device (enable "Install from unknown sources")
+          3. Open app and configure server address
+          4. Start syncing!
           
-          ### 📝 配置文件
+          ### ⚙️ Configuration
           
-          首次运行会生成 `config.json`，可根据需要修改：
-          - `port`: 服务端口（默认 5678）
-          - `token`: API 访问令牌
-          - `auto_start`: 开机自启（Windows 支持自动配置）
-          - `log_level`: 日志级别（debug/info/error）
+          First run generates `config.json`:
+          - `port`: Service port (default 5678)
+          - `token`: API access token (optional)
+          - `auto_start`: Auto-start on boot (Windows auto-config)
+          - `log_level`: Log level (debug/info/error)
           
-          ### 🔧 平台差异说明
+          ### 🌍 Multi-Language Support
           
-          - **Windows**: 支持系统级剪贴板监听、自动开机自启、防火墙配置
-          - **Linux/macOS**: 使用轮询方式监听剪贴板，开机自启和防火墙需手动配置
+          - Interface: English, 简体中文, 日本語
+          - Auto-detect system language
           
-          ### 更新内容
+          ### 🔧 Platform Features
           
-          请查看提交记录了解详细更新内容。
+          - **Windows**: System-level clipboard monitoring, auto-start, firewall auto-config
+          - **Linux/macOS**: Polling-based monitoring, manual startup configuration
+          
+          ### 📚 Documentation
+          
+          - [Quick Start Guide](https://github.com/copypasteengine/clipboard-bridge/blob/main/QUICKSTART.md)
+          - [Android App Manual](https://github.com/copypasteengine/clipboard-bridge/blob/main/android-app/README.md)
+          - [Architecture](https://github.com/copypasteengine/clipboard-bridge/blob/main/ARCHITECTURE.md)
+          
+          ### 📝 Changelog
+          
+          See commit history for detailed changes.
         draft: false
         prerelease: false
       env:

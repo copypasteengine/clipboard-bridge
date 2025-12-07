@@ -165,7 +165,9 @@ jobs:
           
           [中文说明](https://github.com/copypasteengine/clipboard-bridge/blob/main/README.zh-CN.md) | [Documentation](https://github.com/copypasteengine/clipboard-bridge#readme)
           
-          Cross-device clipboard sync solution with desktop service and native Android app.
+          **Lightweight text clipboard sync** across devices. Desktop service + Native Android App.
+          
+          > 📝 **Text Only**: This project syncs plain text. For images/files, use [LocalSend](https://localsend.org/).
           
           ### 🖥️ Desktop Versions
           
@@ -221,10 +223,19 @@ jobs:
           - Interface: English, 简体中文, 日本語
           - Auto-detect system language
           
+          ### 📋 What's Supported
+          
+          **✅ Supported:**
+          - Plain text, URLs, verification codes, messages, code snippets
+          
+          **❌ Not Supported:**
+          - Images, files, rich text, binary data
+          
           ### 🔧 Platform Features
           
           - **Windows**: System-level clipboard monitoring, auto-start, firewall auto-config
           - **Linux/macOS**: Polling-based monitoring, manual startup configuration
+          - **Android**: Auto-sync service, Quick Settings, Widgets, App Shortcuts
           
           ### 📚 Documentation
           

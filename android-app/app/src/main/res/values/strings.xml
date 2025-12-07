@@ -57,4 +57,12 @@
     <string name="smart_sync_description">Auto-detect and sync clipboard</string>
     <string name="pull_description">Pull clipboard from PC</string>
     <string name="push_description">Push clipboard to PC</string>
+    
+    <!-- Auto Sync -->
+    <string name="auto_sync">Auto Sync</string>
+    <string name="auto_sync_enabled">Auto-sync enabled</string>
+    <string name="auto_sync_disabled">Auto-sync disabled</string>
+    <string name="auto_sync_description">Automatically sync clipboard changes to PC</string>
+    <string name="auto_sync_info">Keep service running to enable auto-sync</string>
+    <string name="battery_optimization_warning">For best experience, disable battery optimization for this app</string>
 </resources>

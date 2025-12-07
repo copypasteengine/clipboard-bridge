@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:name=".ClipboardBridgeApp"
@@ -50,6 +53,12 @@
         <service
             android:name=".service.ClipboardSyncService"
             android:exported="false" />
+        
+        <!-- 自动同步服务（前台服务） -->
+        <service
+            android:name=".service.AutoSyncService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
         
         <!-- 桌面小部件 -->
         <receiver

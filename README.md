@@ -118,6 +118,7 @@ chmod +x clipboard-bridge
 - 🏠 **Home Screen Widget** - Direct sync buttons on home screen
 - 📱 **App Shortcuts** - Long-press app icon for quick actions
 - ⚡ **Quick Settings Tile** - Swipe down notification bar to sync
+- 🔄 **Auto-Sync Service** - Android→PC automatic sync like Universal Clipboard
 - 🎯 **Faster than iOS Shortcuts!**
 
 #### iOS - Shortcuts

@@ -2,7 +2,9 @@
 
 [中文文档](./README.zh-CN.md) | English
 
-A lightweight clipboard synchronization solution that enables seamless clipboard sharing between computers and mobile devices via HTTP API.
+A lightweight **text clipboard** synchronization solution that enables seamless text sharing between computers and mobile devices via HTTP API.
+
+> **📝 Note**: This project focuses on **plain text synchronization only**. For image/file transfer, consider [LocalSend](https://localsend.org/) or [KDE Connect](https://kdeconnect.kde.org/).
 
 ## 🎯 Use Cases
 
@@ -163,13 +165,33 @@ Show Notification
 
 See [iOS Shortcuts Configuration](#ios-shortcuts-configuration) at the end of this document for details.
 
+## 📋 What Can Be Synced?
+
+### ✅ Supported (Plain Text)
+
+- **URLs** - Copy links between devices
+- **Verification Codes** - SMS/Email codes
+- **Messages** - Chat content, notes
+- **Code Snippets** - Programming code
+- **Addresses** - Contact information
+- **Plain Text** - Any text content
+
+### ❌ Not Supported
+
+- **Images** - Screenshots, photos
+- **Files** - Documents, videos
+- **Rich Text** - Formatted text with styles
+- **Binary Data** - Non-text content
+
+> For image/file transfer, we recommend specialized tools like [LocalSend](https://localsend.org/)
+
 ## 🎯 Usage Examples
 
 ### Example 1: Open PC's Copied URL on Phone
 
 ```
 1. Copy a URL in PC browser
-2. Tap "Pull from PC" on phone App
+2. Tap "Pull from PC" on phone App (or use Quick Settings)
 3. Paste and open in phone browser
 ```
 
@@ -177,16 +199,16 @@ See [iOS Shortcuts Configuration](#ios-shortcuts-configuration) at the end of th
 
 ```
 1. Receive SMS code on phone, copy it
-2. Tap "Push to PC"
+2. Swipe down → Tap "Smart Sync" (or tap widget)
 3. Paste the code on PC
 ```
 
-### Example 3: Cross-Device Content Editing
+### Example 3: Transfer Code Snippets
 
 ```
-1. Find useful text on phone, copy it
-2. Smart sync to PC
-3. Paste into Word document on PC
+1. Copy code on phone
+2. Auto-sync (if enabled) or Quick Settings
+3. Paste into IDE on PC
 ```
 
 ## 🔌 API Reference

@@ -135,7 +135,7 @@ Android 端完整使用手册。
 
 - [快速开始](./quick-start.md) - 初次安装
 - [快捷访问](./QUICK_ACCESS.md) - 小部件和快捷方式
-- [API 参考](../en/api-reference.md) - HTTP API
+- [API 参考](./api-reference.md) - HTTP API
 - [常见问题](./faq.md) - 问题解答
 
 ---

@@ -100,5 +100,5 @@ Copy text → Swipe down → Tap "Smart Sync" → Done!
 
 ---
 
-**See also:** [Android App Guide](./android-guide.md) | [Auto-Sync](../zh-CN/auto-sync.md)
+**See also:** [Android App Guide](./android-guide.md) | [Auto-Sync](./auto-sync.md)
 

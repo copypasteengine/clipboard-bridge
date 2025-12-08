@@ -21,8 +21,9 @@
 - **[FAQ](./en/faq.md)** - Common questions
 
 ### 🛠️ Developer
-- **[Architecture](../zh-CN/architecture.md)** - System design (Chinese)
-- **[Building](../zh-CN/BUILDING.md)** - Compile guide (Chinese)
+- **[Architecture](./en/architecture.md)** - System design
+- **[Building](./en/building.md)** - Compile guide
+- **[Auto-Sync](./en/auto-sync.md)** - Auto-sync feature
 
 ---
 
@@ -36,7 +37,7 @@
 - **[iOS 指南](./zh-CN/ios-guide.md)** - 快捷指令配置
 
 ### 🔧 参考文档
-- **[API 参考](../en/api-reference.md)** - HTTP API 文档
+- **[API 参考](./zh-CN/api-reference.md)** - HTTP API 文档
 - **[配置说明](./zh-CN/configuration.md)** - 配置文件选项
 - **[常见问题](./zh-CN/faq.md)** - 问题解答
 

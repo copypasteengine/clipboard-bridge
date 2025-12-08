@@ -190,7 +190,7 @@ sudo ufw allow 5678/tcp
 ## 🔗 仍需帮助？
 
 - 查看 [架构设计](./architecture.md) 了解工作原理
-- 查看 [API 参考](../en/api-reference.md) 了解集成方式
+- 查看 [API 参考](./api-reference.md) 了解集成方式
 - [提交 Issue](https://github.com/copypasteengine/clipboard-bridge/issues)
 
 ---

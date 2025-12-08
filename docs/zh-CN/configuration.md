@@ -146,7 +146,7 @@ API 访问令牌，用于安全保护。
 
 - [快速开始](./quick-start.md) - 初次安装
 - [常见问题](./faq.md) - 问题解答
-- [API 参考](../en/api-reference.md) - API 文档
+- [API 参考](./api-reference.md) - API 文档
 
 ---
 

@@ -189,7 +189,7 @@ Or use dedicated app like [Join](https://joaoapps.com/join/)
 
 ## 🔗 Still Need Help?
 
-- Check [Architecture](../zh-CN/architecture.md) for how it works
+- Check [Architecture](./architecture.md) for how it works
 - See [API Reference](./api-reference.md) for integration
 - [Open an Issue](https://github.com/copypasteengine/clipboard-bridge/issues)
 

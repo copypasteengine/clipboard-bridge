@@ -12,18 +12,22 @@
 - **[Quick Start Guide](./en/quick-start.md)** - 5-minute setup
 
 ### 📱 User Guides
-- **[Android Guide](./en/android-guide.md)** - App, widgets, quick access
+- **[Android Guide](./en/android-guide.md)** - App usage & features
+- **[Android Quick Access](./en/android-quick-access.md)** - Widgets & shortcuts
+- **[Android HTTP Shortcuts](./en/android-http-shortcuts.md)** - Alternative app
 - **[iOS Guide](./en/ios-guide.md)** - Shortcuts configuration
 
 ### 🔧 Reference
-- **[API Reference](./en/api-reference.md)** - HTTP API docs
+- **[API Reference](./en/api-reference.md)** - HTTP API documentation
 - **[Configuration](./en/configuration.md)** - Config file options
 - **[FAQ](./en/faq.md)** - Common questions
 
 ### 🛠️ Developer
-- **[Architecture](./en/architecture.md)** - System design
-- **[Building](./en/building.md)** - Compile guide
+- **[Architecture](./en/architecture.md)** - System architecture
+- **[Building](./en/building.md)** - Compile from source
 - **[Auto-Sync](./en/auto-sync.md)** - Auto-sync feature
+- **[Signing](./en/signing.md)** - APK signing
+- **[i18n](./en/i18n.md)** - Internationalization
 
 ---
 
@@ -33,7 +37,9 @@
 - **[快速开始指南](./zh-CN/quick-start.md)** - 5 分钟上手
 
 ### 📱 用户指南
-- **[Android 指南](./zh-CN/android-guide.md)** - App、小部件、快捷访问
+- **[Android 指南](./zh-CN/android-guide.md)** - App 使用与功能
+- **[Android 快捷访问](./zh-CN/android-quick-access.md)** - 小部件与快捷方式
+- **[Android HTTP Shortcuts](./zh-CN/android-http-shortcuts.md)** - 替代方案
 - **[iOS 指南](./zh-CN/ios-guide.md)** - 快捷指令配置
 
 ### 🔧 参考文档
@@ -43,9 +49,10 @@
 
 ### 🛠️ 开发者
 - **[架构设计](./zh-CN/architecture.md)** - 系统架构
-- **[Android 编译](./zh-CN/BUILDING.md)** - 编译指南
-- **[APK 签名](./zh-CN/SIGNING.md)** - 签名配置
-- **[国际化](./zh-CN/I18N.md)** - 多语言支持
+- **[编译指南](./zh-CN/building.md)** - 从源码构建
+- **[自动同步](./zh-CN/auto-sync.md)** - 自动同步功能
+- **[APK 签名](./zh-CN/signing.md)** - 签名配置
+- **[国际化](./zh-CN/i18n.md)** - 多语言支持
 
 ---
 

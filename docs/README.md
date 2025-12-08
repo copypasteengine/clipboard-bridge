@@ -9,37 +9,42 @@
 ## English Documentation
 
 ### 🚀 Getting Started
-- **[Quick Start Guide](./en/quick-start.md)** - Get up and running in 5 minutes
+- **[Quick Start Guide](./en/quick-start.md)** - 5-minute setup
 
-### 📱 Mobile Guides
-- **[Android Quick Access](./en/android-quick-access.md)** - Widgets, shortcuts, and quick settings
+### 📱 User Guides
+- **[Android Guide](./en/android-guide.md)** - App, widgets, quick access
+- **[iOS Guide](./en/ios-guide.md)** - Shortcuts configuration
 
 ### 🔧 Reference
-- **[API Reference](./en/api-reference.md)** - Complete HTTP API documentation
+- **[API Reference](./en/api-reference.md)** - HTTP API docs
+- **[Configuration](./en/configuration.md)** - Config file options
+- **[FAQ](./en/faq.md)** - Common questions
 
-### 🛠️ Development
-- See Chinese documentation below for architecture and building guides
+### 🛠️ Developer
+- **[Architecture](../zh-CN/architecture.md)** - System design (Chinese)
+- **[Building](../zh-CN/BUILDING.md)** - Compile guide (Chinese)
 
 ---
 
 ## 中文文档
 
 ### 🚀 快速开始
-- **[快速开始指南](./zh-CN/quick-start.md)** - 5 分钟快速上手
+- **[快速开始指南](./zh-CN/quick-start.md)** - 5 分钟上手
 
-### 📱 移动端指南
-- **[Android App 使用手册](./zh-CN/README.md)** - Android 完整使用手册
-- **[Android 快捷访问](./zh-CN/QUICK_ACCESS.md)** - 小部件、快捷方式、快速设置
-- **[Android HTTP Shortcuts](./zh-CN/android-http-shortcuts.md)** - HTTP Shortcuts App 配置
+### 📱 用户指南
+- **[Android 指南](./zh-CN/android-guide.md)** - App、小部件、快捷访问
+- **[iOS 指南](./zh-CN/ios-guide.md)** - 快捷指令配置
 
-### 🔧 进阶使用
-- **[自动同步方案](./zh-CN/auto-sync.md)** - 自动同步功能说明
+### 🔧 参考文档
+- **[API 参考](../en/api-reference.md)** - HTTP API 文档
+- **[配置说明](./zh-CN/configuration.md)** - 配置文件选项
+- **[常见问题](./zh-CN/faq.md)** - 问题解答
 
 ### 🛠️ 开发者
-- **[架构设计](./zh-CN/architecture.md)** - 系统架构和设计
-- **[Android 编译指南](./zh-CN/BUILDING.md)** - Android 从源码构建
-- **[APK 签名说明](./zh-CN/SIGNING.md)** - Android 签名配置
-- **[国际化支持](./zh-CN/I18N.md)** - 多语言翻译指南
+- **[架构设计](./zh-CN/architecture.md)** - 系统架构
+- **[Android 编译](./zh-CN/BUILDING.md)** - 编译指南
+- **[APK 签名](./zh-CN/SIGNING.md)** - 签名配置
+- **[国际化](./zh-CN/I18N.md)** - 多语言支持
 
 ---
 

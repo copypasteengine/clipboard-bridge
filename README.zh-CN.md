@@ -302,8 +302,7 @@ X-Auth-Token: your-token
    - 打开 App 点击同步按钮
 3. 完成！✓
 
-**快捷访问指南：** [android-app/QUICK_ACCESS.md](./android-app/QUICK_ACCESS.md)  
-**应用使用手册：** [android-app/README.md](./android-app/README.md)
+**📖 [快捷访问指南](./docs/zh-CN/QUICK_ACCESS.md)** - 小部件、快捷方式和快速设置
 
 ### iOS 快捷指令配置
 

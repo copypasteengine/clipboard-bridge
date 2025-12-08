@@ -498,11 +498,12 @@ cd android-app
 
 ## 📚 相关文档
 
-- **[QUICKSTART.md](./QUICKSTART.md)** - 5 分钟快速上手指南 ⭐
-- **[ANDROID.md](./ANDROID.md)** - Android HTTP Shortcuts 详细配置
-- **[android-app/README.md](./android-app/README.md)** - Android App 使用说明
-- **[android-app/BUILDING.md](./android-app/BUILDING.md)** - Android App 开发指南
-- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - 系统架构设计文档
+**[📖 完整文档](./docs/README.md)** - 所有指南和参考文档
+
+**快速链接：**
+- **[快速开始](./docs/zh-CN/quick-start.md)** - 5 分钟快速上手 ⭐
+- **[Android 快捷访问](./docs/zh-CN/android-quick-access.md)** - 小部件和快捷方式
+- **[API 参考](./docs/en/api-reference.md)** - HTTP API 文档
 
 ## 📄 许可证
 

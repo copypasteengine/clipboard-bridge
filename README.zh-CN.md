@@ -499,10 +499,11 @@ cd android-app
 
 **[📖 完整文档](./docs/README.md)** - 所有指南和参考文档
 
-**快速链接：**
-- **[快速开始](./docs/zh-CN/quick-start.md)** - 5 分钟快速上手 ⭐
-- **[Android 快捷访问](./docs/zh-CN/android-quick-access.md)** - 小部件和快捷方式
-- **[API 参考](./docs/en/api-reference.md)** - HTTP API 文档
+**快速访问：**
+- 🚀 **[快速开始](./docs/zh-CN/quick-start.md)** - 5 分钟上手
+- 📱 **[Android 指南](./docs/zh-CN/README.md)** - App 使用和快捷访问
+- 🔌 **[API 参考](./docs/en/api-reference.md)** - HTTP API 文档
+- 📖 **[完整文档](./DOCS.md)** - 所有文档索引
 
 ## 📄 许可证
 

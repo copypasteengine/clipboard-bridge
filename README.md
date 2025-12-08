@@ -431,10 +431,11 @@ Log location: `clipboard_bridge.log` (same directory as executable)
 
 **[📖 Complete Documentation](./docs/README.md)** - All guides and references
 
-**Quick Links:**
-- **[Quick Start](./docs/en/quick-start.md)** - 5-minute setup guide ⭐
-- **[Android Quick Access](./docs/en/android-quick-access.md)** - Widgets and shortcuts
-- **[API Reference](./docs/en/api-reference.md)** - HTTP API documentation
+**Quick Access:**
+- 🚀 **[Quick Start](./docs/en/quick-start.md)** - 5-minute setup
+- 📱 **[Android Guide](./docs/en/android-quick-access.md)** - Widgets & shortcuts
+- 🔌 **[API Reference](./docs/en/api-reference.md)** - HTTP API docs
+- 📖 **[All Documentation](./DOCS.md)** - Complete guide index
 
 ## 📄 License
 

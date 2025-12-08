@@ -1,441 +1,96 @@
-# 📋 Clipboard Bridge - Cross-Device Clipboard Sync
+# 📋 Clipboard Bridge
 
-[中文文档](./README.zh-CN.md) | English
+[中文](./README.zh-CN.md) | **English**
 
-A lightweight **text clipboard** synchronization solution that enables seamless text sharing between computers and mobile devices via HTTP API.
+**Lightweight text clipboard sync across devices.** Share text between your computer and phone via simple HTTP API.
 
-> **📝 Note**: This project focuses on **plain text synchronization only**. For image/file transfer, consider [LocalSend](https://localsend.org/) or [KDE Connect](https://kdeconnect.kde.org/).
+> **📝 Plain Text Only** - For images/files, use [LocalSend](https://localsend.org/) or [KDE Connect](https://kdeconnect.kde.org/)
 
-## 🎯 Use Cases
+## 🎯 Who Should Use This?
 
-### ✅ Recommended Scenarios
+**✅ Perfect For:**
+- Android + Windows/Linux/macOS
+- iPhone + Windows/Linux
 
-**📱 Android + 🖥️ Windows/Linux/macOS**
-- ✅ **Sync Android phone with any OS computer**
-- ✅ Full-featured native Android App
-- ✅ Modern Material Design 3 interface
-- ✅ One-tap sync, smooth experience
+**❌ Not Needed:**
+- iPhone + Mac (use Apple's Universal Clipboard)
 
-**📱 iPhone + 🪟 Windows / 🐧 Linux**
-- ✅ **Sync iOS with Windows/Linux computers**
-- ✅ Implemented via iOS Shortcuts
-- ✅ Siri voice control support
-- ✅ Home screen widget support
+## ✨ Features
 
-### 💡 Not Recommended
+- 🌐 HTTP REST API
+- 📱 Native Android App (Material Design 3)
+- 🌍 Multi-language (EN/ZH/JA)
+- 🔄 Smart Sync (auto-detect direction)
+- ⚡ Quick Access (widgets, shortcuts, quick settings)
+- 🔒 Optional token authentication
+- 📊 System tray UI
+- ⚡ Lightweight (CPU <0.1%, RAM ~15MB)
 
-**📱 iPhone + 🍎 Mac**
-- ⚠️ Apple ecosystem has built-in Universal Clipboard
-- ⚠️ iCloud auto-sync, better experience
-- ⚠️ No third-party tools needed
-
-> **Note**: macOS and iOS already have native clipboard sync via iCloud. This project primarily solves **cross-ecosystem** clipboard sync needs (Android ↔ Computer, iOS ↔ Windows/Linux).
-
-## ✨ Key Features
-
-- 🌐 **HTTP REST API** - Simple and accessible from any device
-- 📱 **Native Android App** - Beautiful Material Design 3 UI
-- 🌍 **Multi-Language** - English, 简体中文, 日本語
-- 🔄 **Smart Sync** - Auto-detect sync direction
-- 🔒 **Token Authentication** - Optional access token protection
-- 📊 **System Tray** - User-friendly tray icon and menu
-- ⚡ **Lightweight** - CPU <0.1%, Memory ~15MB
-- 📝 **Complete Logging** - Easy troubleshooting
-
-## 🖥️ Supported Platforms
-
-### Desktop Service
-
-| Platform | Architecture | Clipboard Monitoring | Auto-Start |
-|----------|--------------|---------------------|------------|
-| Windows | x64 | ✅ System-level (Real-time) | ✅ Auto-config |
-| Linux | x64 | ⚡ Polling (1s interval) | 📝 Manual |
-| macOS | Apple Silicon | ⚡ Polling (1s interval) | 📝 Manual |
-
-### Mobile Clients
+## 🖥️ Platforms
 
 | Platform | Type | Features |
 |----------|------|----------|
-| Android | Native App (APK) | Smart sync, Config save, Real-time preview |
-| iOS | Shortcuts | Smart sync, Siri control, Automation |
+| Windows / Linux / macOS | Desktop Service | HTTP API, System tray, Auto-start |
+| Android | Native App | Auto-sync, Widgets, Quick Settings |
+| iOS | Shortcuts | Siri control, Automation |
 
-## 📥 Quick Start
+## 🚀 Quick Start
 
-### Step 1: Install Desktop Service
+### 1. Download
 
-Visit [Releases](https://github.com/copypasteengine/clipboard-bridge/releases) to download:
+**Desktop:** [Releases Page](https://github.com/copypasteengine/clipboard-bridge/releases)
+- Windows: `clipboard-bridge-windows-amd64.zip`
+- Linux: `clipboard-bridge-linux-amd64.tar.gz`
+- macOS: `clipboard-bridge-macos-arm64.tar.gz`
 
-**Windows:**
-```powershell
-# 1. Download clipboard-bridge-windows-amd64.zip
-# 2. Extract to any folder
-# 3. Double-click clipboard-bridge.exe
-# 4. Check system tray icon ✓
-```
+**Android:** `clipboard-bridge-android-*.apk`
 
-**Linux:**
-```bash
-wget https://github.com/copypasteengine/clipboard-bridge/releases/latest/download/clipboard-bridge-linux-amd64.tar.gz
-tar -xzf clipboard-bridge-linux-amd64.tar.gz
-chmod +x clipboard-bridge
-./clipboard-bridge
-```
+### 2. Install & Run
 
-**macOS:**
-```bash
-curl -LO https://github.com/copypasteengine/clipboard-bridge/releases/latest/download/clipboard-bridge-macos-arm64.tar.gz
-tar -xzf clipboard-bridge-macos-arm64.tar.gz
-chmod +x clipboard-bridge
-./clipboard-bridge
-```
+**Desktop:** Extract and run (Windows: double-click .exe)  
+**Android:** Install APK → Open → Configure server address
 
-### Step 2: Install Mobile Client
+### 3. Start Syncing!
 
-#### Android - Native App (Recommended ⭐)
+Copy text on one device → Sync → Paste on another device ✓
 
-1. **Download and Install APK**
-   - Download `clipboard-bridge-android-v1.0.0-debug.apk`
-   - Enable "Install unknown apps" in Settings
-   - Install the APK
-
-2. **Configure Server**
-   - Open the App
-   - Tap ⚙️ icon in top-right corner
-   - Enter your PC IP: `http://192.168.1.100:5678`
-   - Save
-
-3. **Start Syncing**
-   - Tap "Smart Sync" button
-   - ✓ Done!
-
-**App Features:**
-- ✅ One-tap pull from PC
-- ✅ One-tap push to PC
-- ✅ Smart sync (auto-detect direction)
-- ✅ Real-time clipboard preview on both sides
-- ✅ Auto-save configuration
-- ✅ Material Design 3 interface
-
-**Quick Access (No need to open app!):**
-- 🏠 **Home Screen Widget** - Direct sync buttons on home screen
-- 📱 **App Shortcuts** - Long-press app icon for quick actions
-- ⚡ **Quick Settings Tile** - Swipe down notification bar to sync
-- 🔄 **Auto-Sync Service** - Android→PC automatic sync like Universal Clipboard
-- 🎯 **Faster than iOS Shortcuts!**
-
-#### iOS - Shortcuts
-
-**Applicable:** iOS with Windows/Linux computers
-
-> **Tip**: If you use iPhone + Mac, use Apple's Universal Clipboard instead (requires same iCloud account).
-
-**Quick Setup - Pull from PC:**
-
-1. Open "Shortcuts" App → Tap "+"
-2. Add these actions:
-
-```
-Get Contents of URL
-  URL: http://192.168.1.100:5678/pull
-  Method: GET
-  (If token is set, add header: X-Auth-Token)
-
-Set Clipboard
-  Content: [Get Contents of URL result]
-
-Show Notification
-  Content: ✓ Synced from PC
-```
-
-**Quick Setup - Push to PC:**
-
-```
-Get Clipboard
-
-Get Contents of URL
-  URL: http://192.168.1.100:5678/push
-  Method: POST
-  Request Body: Form
-  Field: text = [Clipboard]
-  (If token is set, add header: X-Auth-Token)
-
-Show Notification
-  Content: ✓ Sent to PC
-```
-
-See [iOS Shortcuts Configuration](#ios-shortcuts-configuration) at the end of this document for details.
-
-## 📋 What Can Be Synced?
-
-### ✅ Supported (Plain Text)
-
-- **URLs** - Copy links between devices
-- **Verification Codes** - SMS/Email codes
-- **Messages** - Chat content, notes
-- **Code Snippets** - Programming code
-- **Addresses** - Contact information
-- **Plain Text** - Any text content
-
-### ❌ Not Supported
-
-- **Images** - Screenshots, photos
-- **Files** - Documents, videos
-- **Rich Text** - Formatted text with styles
-- **Binary Data** - Non-text content
-
-> For image/file transfer, we recommend specialized tools like [LocalSend](https://localsend.org/)
-
-## 🎯 Usage Examples
-
-### Example 1: Open PC's Copied URL on Phone
-
-```
-1. Copy a URL in PC browser
-2. Tap "Pull from PC" on phone App (or use Quick Settings)
-3. Paste and open in phone browser
-```
-
-### Example 2: Send Phone's Verification Code to PC
-
-```
-1. Receive SMS code on phone, copy it
-2. Swipe down → Tap "Smart Sync" (or tap widget)
-3. Paste the code on PC
-```
-
-### Example 3: Transfer Code Snippets
-
-```
-1. Copy code on phone
-2. Auto-sync (if enabled) or Quick Settings
-3. Paste into IDE on PC
-```
-
-## 🔌 API Reference
-
-The desktop service provides REST API accessible from any client:
-
-### Get Clipboard
-
-```http
-GET http://PC_IP:5678/pull
-X-Auth-Token: your-token
-```
-
-**Response:** Clipboard text content
-
-### Set Clipboard
-
-```http
-POST http://PC_IP:5678/push
-X-Auth-Token: your-token
-Content-Type: application/x-www-form-urlencoded
-
-text=Hello World
-```
-
-**Response:** `OK`
-
-### Get Metadata
-
-```http
-GET http://PC_IP:5678/meta
-X-Auth-Token: your-token
-```
-
-**Response:**
-```json
-{
-  "text": "Hello World",
-  "updated": 1733400000
-}
-```
-
-### Health Check
-
-```http
-GET http://PC_IP:5678/ping
-X-Auth-Token: your-token
-```
-
-**Response:** `PONG`
-
-## ⚙️ Configuration
-
-First run creates `config.json`:
-
-```json
-{
-  "port": 5678,
-  "token": "",
-  "auto_start": true,
-  "auto_firewall": true,
-  "log_level": "info"
-}
-```
-
-| Option | Default | Description |
-|--------|---------|-------------|
-| `port` | 5678 | Service port (1024-65535) |
-| `token` | "" | API token, empty to disable auth |
-| `auto_start` | true | Auto-start on boot (Windows auto-config) |
-| `auto_firewall` | true | Auto firewall rules (Windows only) |
-| `log_level` | "info" | Log level: debug/info/error |
-
-## 📊 System Tray Menu
-
-Right-click the tray icon:
-
-| Menu Item | Function |
-|-----------|----------|
-| 📡 Service Address | Show external access address |
-| 💻 Local Address | Show localhost address |
-| 🚀 Auto-Start | Toggle auto-start (Windows) |
-| ▶️ Start/Stop Service | Manual control |
-| 📄 Open Log File | View logs |
-| ❌ Exit | Quit program |
-
-## 🔒 Security
-
-### Basic Security
-
-1. **Set Token** - Configure `token` in `config.json` to prevent unauthorized access
-2. **LAN Only** - Use only in trusted networks (home/office)
-3. **Firewall**
-   - Windows: Auto-configured by the program
-   - Linux: `sudo ufw allow 5678/tcp`
-   - macOS: System Settings → Firewall
-
-### Advanced Security
-
-For encrypted transmission, configure reverse proxy with Nginx/Caddy:
-
-```nginx
-server {
-    listen 443 ssl;
-    ssl_certificate /path/to/cert.pem;
-    ssl_certificate_key /path/to/key.pem;
-    
-    location / {
-        proxy_pass http://localhost:5678;
-    }
-}
-```
-
-## 🐛 Troubleshooting
-
-### Q1: Phone Cannot Connect
-
-**Checklist:**
-- [ ] Phone and PC on same WiFi
-- [ ] PC firewall allows port 5678
-- [ ] Using PC's LAN IP (e.g., 192.168.1.100, not 127.0.0.1)
-- [ ] Desktop service is running (check tray icon)
-
-**Test Method:**  
-Visit `http://PC_IP:5678/ping` in phone browser. If it shows `PONG`, connection is OK.
-
-### Q2: Token Verification Failed
-
-- Ensure tokens match exactly (case-sensitive)
-- Android: Enter token in Settings dialog
-- iOS: Add HTTP header `X-Auth-Token` in Shortcuts
-
-### Q3: Chinese Text Garbled
-
-Service uses UTF-8 encoding, should work fine. Please submit an Issue if you encounter this.
-
-### Q4: Linux Clipboard Not Working
-
-Install dependencies:
-```bash
-# Ubuntu/Debian (X11)
-sudo apt-get install xclip
-
-# Ubuntu/Debian (Wayland)
-sudo apt-get install wl-clipboard
-```
-
-## 🛠️ Build from Source
-
-### Desktop Service
-
-```bash
-# Clone repository
-git clone https://github.com/copypasteengine/clipboard-bridge.git
-cd clipboard-bridge
-
-# Install dependencies
-go mod download
-
-# Build
-# Windows
-go build -ldflags="-H windowsgui" -o clipboard-bridge.exe
-
-# Linux/macOS
-go build -o clipboard-bridge
-```
-
-**Linux Dependencies:**
-```bash
-sudo apt-get install xclip libgtk-3-dev  # Ubuntu/Debian
-```
-
-### Android App
-
-```bash
-cd android-app
-
-# Open with Android Studio
-# Or build via command line:
-./gradlew assembleDebug
-
-# APK location: app/build/outputs/apk/debug/app-debug.apk
-```
-
-See [android-app/BUILDING.md](./android-app/BUILDING.md) for details.
-
-## 📝 Log Files
-
-Log location: `clipboard_bridge.log` (same directory as executable)
-
-**View Logs:**
-- Windows: Tray menu → "📄 Open Log File"
-- Linux/macOS: `tail -f clipboard_bridge.log`
-
-**Example:**
-```
-[2024-12-05 10:30:15] [INFO] Program started
-[2024-12-05 10:30:15] [INFO] 🚀 Clipboard service started
-[2024-12-05 10:30:15] [INFO]    External: http://192.168.1.100:5678
-[2024-12-05 10:31:20] [INFO] Push request from 192.168.1.200
-[2024-12-05 10:31:20] [INFO] ✓ Clipboard updated, 15 bytes
-```
-
-## 🔧 Tech Stack
-
-**Desktop Service:**
-- Go 1.20 + CGo
-- getlantern/systray (System tray)
-- atotto/clipboard (Clipboard access)
-- net/http (HTTP server)
-
-**Android App:**
-- Kotlin + Jetpack Compose
-- Material Design 3
-- OkHttp (HTTP client)
-- Coroutines (Async)
-- DataStore (Config storage)
+**📖 Detailed Guide:** [Quick Start](./docs/en/quick-start.md)
 
 ## 📚 Documentation
 
-**[📖 Complete Documentation](./docs/README.md)** - All guides and references
+**User Guides:**
+- 🚀 [Quick Start](./docs/en/quick-start.md) - 5-minute setup
+- 📱 [Android Guide](./docs/en/android-guide.md) - App & quick access
+- 📱 [iOS Guide](./docs/en/ios-guide.md) - Shortcuts setup
+- ❓ [FAQ](./docs/en/faq.md) - Common questions
 
-**Quick Access:**
-- 🚀 **[Quick Start](./docs/en/quick-start.md)** - 5-minute setup
-- 📱 **[Android Guide](./docs/en/android-quick-access.md)** - Widgets & shortcuts
-- 🔌 **[API Reference](./docs/en/api-reference.md)** - HTTP API docs
-- 📖 **[All Documentation](./DOCS.md)** - Complete guide index
+**Reference:**
+- 🔌 [API Reference](./docs/en/api-reference.md) - HTTP API
+- ⚙️ [Configuration](./docs/en/configuration.md) - Config options
+
+**Developer:**
+- 🏗️ [Architecture](./docs/zh-CN/architecture.md) - System design
+- 🔨 [Building](./docs/zh-CN/BUILDING.md) - Compile from source
+
+**📖 [All Documentation](./DOCS.md)** - Complete index
+
+## 🌐 API Example
+
+```bash
+# Get clipboard from PC
+curl http://192.168.1.100:5678/pull
+
+# Send to PC
+curl -X POST http://192.168.1.100:5678/push -d "text=Hello"
+```
+
+See [API Reference](./docs/en/api-reference.md) for details.
+
+## 🔒 Security
+
+- Use Token authentication for production
+- LAN-only recommended
+- No cloud/internet connection needed
 
 ## 📄 License
 
@@ -443,86 +98,8 @@ MIT License
 
 ## 🤝 Contributing
 
-Issues and Pull Requests are welcome!
-
-- **GitHub**: https://github.com/copypasteengine/clipboard-bridge
-- **Issues**: https://github.com/copypasteengine/clipboard-bridge/issues
-- **Releases**: https://github.com/copypasteengine/clipboard-bridge/releases
+Issues and PRs welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ---
 
-## 📱 iOS Shortcuts Configuration
-
-### Basic Setup - Pull from PC
-
-1. Open "Shortcuts" App
-2. Tap "+" in top-right
-3. Add these actions:
-
-```
-"Get Contents of URL"
-  URL: http://192.168.1.100:5678/pull  ← Replace with your PC IP
-  Method: GET
-  
-  If token is set, tap "Show More" → Enable "Headers"
-    Add header: X-Auth-Token = your-token
-
-"Set Clipboard"
-  Content: [Get Contents of URL]
-
-"Show Notification"
-  Content: ✓ Synced from PC
-```
-
-### Basic Setup - Push to PC
-
-```
-"Get Clipboard"
-
-"Get Contents of URL"
-  URL: http://192.168.1.100:5678/push  ← Replace with your PC IP
-  Method: POST
-  Request Body: Form
-  Add field: text = [Clipboard]
-  
-  If token is set:
-    Add header: X-Auth-Token = your-token
-
-"Show Notification"
-  Content: ✓ Sent to PC
-```
-
-### Advanced - Smart Sync
-
-Create an intelligent shortcut that auto-detects sync direction:
-
-1. Get PC clipboard (`/meta` endpoint)
-2. Get iPhone clipboard
-3. Compare and auto-handle:
-   - Same → Show "Already synced"
-   - iPhone empty → Pull from PC
-   - PC empty → Push to PC
-   - Both different → Show selection menu
-
-### Usage Tips
-
-**Add to Home Screen:**
-- Long-press home screen → Widgets → Shortcuts
-- Select your clipboard sync shortcut
-
-**Siri Voice:**
-- "Hey Siri, run clipboard sync"
-
-**Automation:**
-- Auto-run when connecting to specific WiFi
-- Auto-run when opening specific apps
-
----
-
-**Enjoy seamless cross-device clipboard sync!** 🎉
-
-**Primary Use Cases:**
-- ✅ **Android ↔ Windows/Linux/macOS** - Use Android App
-- ✅ **iOS ↔ Windows/Linux** - Use Shortcuts
-- ⚠️ **iOS ↔ macOS** - Use Apple Universal Clipboard instead
-
+**🌟 Star this project if you find it useful!**

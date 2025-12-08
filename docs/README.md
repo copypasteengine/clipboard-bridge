@@ -2,6 +2,8 @@
 
 [English](#english-documentation) | [中文文档](#中文文档) | [日本語](#日本語ドキュメント)
 
+**📍 [Quick Navigation](./NAVIGATION.md)** - Direct links to all docs
+
 ---
 
 ## English Documentation
